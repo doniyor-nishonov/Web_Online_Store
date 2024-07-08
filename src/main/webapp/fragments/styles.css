@@ -1,0 +1,167 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .search-bar {
+    display: flex;
+}
+
+header .search-bar input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+header .search-bar button {
+    padding: 5px;
+    font-size: 16px;
+    background-color: #ff6600;
+    border: none;
+    color: #fff;
+}
+
+header .language-cart {
+    display: flex;
+    align-items: center;
+}
+
+header .language-cart select,
+header .language-cart .cart {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.hero {
+    background: url('./img/banner-bg.png') no-repeat center center/cover;
+    height: 60vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff6600;
+    border: none;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.categories {
+    padding: 40px 20px;
+}
+
+.categories h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.category-items .item {
+    flex: 0 0 30%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+.category-items .item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.category-items .item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.category-items .item .price {
+    font-size: 16px;
+    color: #ff6600;
+    margin: 10px 0;
+}
+
+.category-items .item button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ff6600;
+    border: none;
+    color: #fff;
+    margin: 5px;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer .footer-content input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+footer .footer-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff6600;
+    border: none;
+    color: #fff;
+}
+
+footer nav {
+    margin: 20px 0;
+}
+
+footer nav a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
