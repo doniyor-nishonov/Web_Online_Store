@@ -2,9 +2,7 @@ package com.pdp.web_online_store.entity.discount;
 
 import com.pdp.web_online_store.entity.Auditable;
 import com.pdp.web_online_store.entity.product.Product;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +19,7 @@ import java.time.LocalDateTime;
 @Setter
 @SuperBuilder(toBuilder = true)
 public class Discount extends Auditable {
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Product product;
     @CreationTimestamp
     @Column(columnDefinition = "timestamp default now()", updatable = false)

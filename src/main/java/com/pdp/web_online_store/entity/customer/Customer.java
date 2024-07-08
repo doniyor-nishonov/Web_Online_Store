@@ -18,7 +18,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder(toBuilder = true)
 public class Customer extends Auditable {
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Users users;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
