@@ -77,11 +77,13 @@
 <body>
 <div class="welcome-box" style="color: chartreuse">
     <h1 style="color: black">Log in</h1>
-    <input type="text" name="username" placeholder="@Username">
-    <br>
-    <input type="password" name="password" placeholder="#Password">
-    <br>
-    <button type="submit" class="btn" >Log in</button>
+    <form method="post" action="/login">
+        <input type="text" name="username" placeholder="@Username">
+        <br>
+        <input type="password" name="password" placeholder="#Password">
+        <br>
+        <button type="submit" class="btn">Log in</button>
+    </form>
 </div>
 
 </body>
