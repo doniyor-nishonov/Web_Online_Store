@@ -1,4 +1,4 @@
-package com.pdp.web_online_store.servlet;
+package com.pdp.web_online_store.servlets;
 
 import jakarta.servlet.http.HttpServlet;
 
