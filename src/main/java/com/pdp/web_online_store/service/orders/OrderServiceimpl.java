@@ -4,29 +4,30 @@ import com.pdp.web_online_store.entity.order.Order;
 
 import java.util.List;
 
-public class OrderServiceimpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     @Override
-    public Order save(Order entity) {
-        return null;
+    public Order save(Order order) {
+        return orderDAO.save(order);
     }
 
     @Override
-    public Order update(Order entity) {
-        return null;
+    public boolean update(Order order) {
+        return orderDAO.update(order);
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
+    public boolean delete(String ID) {
+        return orderDAO.deleteById(ID);
     }
 
+
     @Override
-    public Order findById(String s) {
-        return null;
+    public Order findById(String ID) {
+        return orderDAO.findById(ID);
     }
 
     @Override
     public List<Order> findAll() {
-        return List.of();
+        return orderDAO.findAll();
     }
 }
