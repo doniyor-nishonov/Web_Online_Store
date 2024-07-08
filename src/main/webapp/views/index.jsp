@@ -16,15 +16,7 @@
         <input type="text" name="query" class="search-input" placeholder="Search...">
         <button type="submit" class="search-button">Search</button>
     </form>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="/register" class="register">Register</a></li>
-        </ul>
-    </nav>
+    <jsp:include page="../fragments/navbar.jsp"/>
 </header>
 <main>
     <section class="hero">
@@ -36,20 +28,20 @@
         <div class="product-list">
             <div class="product">
                 <img src="../fragments/img/computer-img.png" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>$10.00</p>
+                <h3>Computer Asus Tuf Gaming</h3>
+                <p>$1200.00</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product">
                 <img src="../fragments/img/laptop-img.png" alt="Product 2">
-                <h3>Product 2</h3>
-                <p>$15.00</p>
+                <h3>Laptop </h3>
+                <p>$700.00</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product">
                 <img src="../fragments/img/tshirt-img.png" alt="Product 3">
-                <h3>Product 3</h3>
-                <p>$20.00</p>
+                <h3>Yellow Shirt</h3>
+                <p>$50.00</p>
                 <button>Add to Cart</button>
             </div>
         </div>

@@ -11,4 +11,5 @@ public interface UserService extends BaseService<Users, String> {
 
     Users findByEmail(String email);
 
+    boolean checkByEmail(String email);
 }

@@ -43,4 +43,10 @@ public class UsersServiceImpl implements UserService {
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public boolean checkByEmail(String email) {
+        return findAll().stream()
+                .anyMatch(users -> users.getEmail().equals(email));
+    }
 }
