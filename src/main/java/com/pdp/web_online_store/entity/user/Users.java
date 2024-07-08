@@ -2,8 +2,6 @@ package com.pdp.web_online_store.entity.user;
 
 import com.pdp.web_online_store.entity.Auditable;
 import com.pdp.web_online_store.entity.address.Address;
-import com.pdp.web_online_store.enums.Role;
-import com.pdp.web_online_store.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -26,4 +24,14 @@ public class Users extends Auditable {
     private Role role;
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    public enum Status {
+        IN_ACTIVE,
+        ACTIVE,
+        BLOCKED
+    }
+
+    public enum Role {
+        ADMIN, USER, SELlER
+    }
 }

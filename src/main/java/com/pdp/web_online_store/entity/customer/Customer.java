@@ -30,7 +30,7 @@ public class Customer extends Auditable {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    private enum OrderStatus{
+    public enum OrderStatus{
         NEW,
         IN_PROGRESS,
         DELIVERED
