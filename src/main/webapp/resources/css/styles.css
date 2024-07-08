@@ -12,10 +12,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 header .logo {
-    font-size: 24px;
+    font-size: 36px;
+    color: #6a0dad;
+    margin-right: 20px;
 }
 
 header nav ul {
@@ -23,6 +27,7 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 header nav ul li {
@@ -32,30 +37,72 @@ header nav ul li {
 header nav ul li a {
     color: white;
     text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #555;
+}
+
+header nav ul li a.register {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+header nav ul li a.register:hover {
+    background-color: #0056b3;
 }
 
 header .search-form {
     display: flex;
     align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-header .search-form input {
-    padding: 5px;
-    border: none;
+.search-input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
     border-radius: 3px;
+    outline: none;
+    width: 200px;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    transform: translateX(-20px);
+    visibility: hidden;
 }
 
-header .search-form button {
-    background-color: #555;
-    color: white;
+.search-input:focus {
+    width: 250px;
+}
+
+.search-button {
+    padding: 5px 10px;
     border: none;
-    padding: 6px 10px;
-    margin-left: 5px;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease, transform 0.4s ease-in-out;
+    transform: translateX(0);
 }
 
-header .search-form button:hover {
-    background-color: #777;
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.search-form:hover .search-input {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.search-form:hover .search-button {
+    transform: translateX(-20px);
 }
 
 .hero {
@@ -109,6 +156,7 @@ header .search-form button:hover {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .product button:hover {
@@ -120,7 +168,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 20px;
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0;
 }
