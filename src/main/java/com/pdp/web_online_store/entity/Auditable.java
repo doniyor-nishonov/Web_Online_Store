@@ -12,10 +12,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 @ToString
 @SuperBuilder(toBuilder = true)
-public class Auditable {
+public abstract class Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -26,3 +25,4 @@ public class Auditable {
     @Column(columnDefinition = "boolean default true")
     private boolean isActive;
 }
+

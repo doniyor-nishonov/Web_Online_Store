@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 @SuperBuilder(toBuilder = true)
 public class Address extends Auditable {
     private String city;
@@ -21,3 +20,4 @@ public class Address extends Auditable {
     private String houseNumber;
     private String phoneNumber;
 }
+

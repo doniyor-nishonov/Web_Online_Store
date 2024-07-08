@@ -1,6 +1,7 @@
 package com.pdp.web_online_store.entity.order;
 
 import com.pdp.web_online_store.entity.Auditable;
+import com.pdp.web_online_store.entity.customer.Customer;
 import com.pdp.web_online_store.entity.user.Users;
 import com.pdp.web_online_store.enums.PaymentType;
 import jakarta.persistence.*;
@@ -23,17 +24,14 @@ public class Order extends Auditable {
     private int quantity;
     private double totalPrice;
 
-    @OneToOne
-    private Users user;
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Customer customer;
 
-    private boolean isPaid = false;
-    private boolean isDelivered = false;
-
-    @Enumerated(EnumType.STRING)
-    private PaymentType paymentType;
+    private boolean isPaid;
+    private boolean isDelivered;
 
     private String deliveryAddress;
-    private String orderStatus;
+
     private String orderDate;
     private String deliveryDate;
 
