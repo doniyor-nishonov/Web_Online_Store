@@ -7,26 +7,26 @@ import java.util.List;
 public class DiscountServiceimpl implements DiscountService{
     @Override
     public Discount save(Discount discount) {
-        return null;
+        return discountDAO.save(discount);
     }
 
     @Override
-    public Discount update(Discount entity) {
-        return null;
+    public boolean update(Discount discount) {
+        return discountDAO.update(discount);
     }
 
     @Override
     public boolean delete(String s) {
-        return false;
+        return discountDAO.deleteById(s);
     }
 
     @Override
     public Discount findById(String s) {
-        return null;
+        return discountDAO.findById(s);
     }
 
     @Override
     public List<Discount> findAll() {
-        return List.of();
+        return discountDAO.findAll();
     }
 }

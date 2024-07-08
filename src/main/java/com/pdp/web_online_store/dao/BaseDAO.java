@@ -1,6 +1,7 @@
 package com.pdp.web_online_store.dao;
 
 import com.pdp.web_online_store.entity.Auditable;
+import com.pdp.web_online_store.entity.user.Users;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -11,7 +12,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
-    protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("library");
+    protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("shopping");
     protected static final EntityManager em = emf.createEntityManager();
 
     private final Class<T> persistenceClass;

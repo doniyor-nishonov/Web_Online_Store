@@ -6,27 +6,27 @@ import java.util.List;
 
 public class MagazineServiceImpl implements MagazineService{
     @Override
-    public Magazine save(Magazine entity) {
-        return null;
+    public Magazine save(Magazine magazine) {
+        return magazineDAO.save(magazine);
     }
 
     @Override
-    public boolean update(Magazine entity) {
-        return null;
+    public boolean update(Magazine magazine) {
+        return magazineDAO.update(magazine);
     }
 
     @Override
     public boolean delete(String s) {
-        return false;
+        return magazineDAO.deleteById(s);
     }
 
     @Override
     public Magazine findById(String s) {
-        return null;
+        return magazineDAO.findById(s);
     }
 
     @Override
     public List<Magazine> findAll() {
-        return List.of();
+        return magazineDAO.findAll();
     }
 }
