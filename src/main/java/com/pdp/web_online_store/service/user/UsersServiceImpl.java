@@ -1,13 +1,17 @@
 package com.pdp.web_online_store.service.user;
 
 import com.pdp.web_online_store.entity.user.Users;
+import com.pdp.web_online_store.utils.PasswordUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UsersServiceImpl implements UserService {
 
     @Override
     public Users save(Users users) {
+        String password = users.getPassword();
+        users.setPassword(PasswordUtils.encode(password));
         return usersDAO.save(users);
     }
 
@@ -33,7 +37,9 @@ public class UsersServiceImpl implements UserService {
 
     @Override
     public boolean login(String email, String password) {
-        return false;
+        return findAll().stream()
+                .anyMatch(users -> Objects.equals(email, users.getEmail())
+                        && PasswordUtils.check(password, users.getPassword()));
     }
 
     @Override
