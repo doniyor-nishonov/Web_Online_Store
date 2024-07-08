@@ -26,7 +26,7 @@
 <main>
     <%
         boolean check = (boolean)(request.getAttribute("check"));
-        if (check) {
+        if (!check) {
     %>
     <section class="response">
         <h1>Registration Successful</h1>
