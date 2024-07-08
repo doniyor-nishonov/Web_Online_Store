@@ -8,7 +8,7 @@ import java.util.List;
 public interface BaseService<T extends Auditable, ID extends Serializable> {
     T save(T entity);
 
-    T update(T entity);
+    boolean update(T entity);
 
     boolean delete(ID id);
 

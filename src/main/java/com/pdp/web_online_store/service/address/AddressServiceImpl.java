@@ -4,14 +4,14 @@ import com.pdp.web_online_store.entity.address.Address;
 
 import java.util.List;
 
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
     @Override
     public Address save(Address entity) {
         return null;
     }
 
     @Override
-    public Address update(Address entity) {
+    public boolean update(Address entity) {
         return null;
     }
 

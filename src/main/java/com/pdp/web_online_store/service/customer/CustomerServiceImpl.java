@@ -11,7 +11,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Customer update(Customer entity) {
+    public boolean update(Customer entity) {
         return null;
     }
 

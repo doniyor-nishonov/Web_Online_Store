@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-@WebFilter(filterName = "SecurityFilter", value = "/*")
+//@WebFilter(filterName = "SecurityFilter", value = "/*")
 public class SecurityFilter implements Filter {
 
     private static final UsersDAO usersDAO = new UsersDAO();
