@@ -4,7 +4,7 @@ import com.pdp.web_online_store.entity.user.Users;
 
 import java.util.List;
 
-public class UsersServiceImpl implements UserService{
+public class UsersServiceImpl implements UserService {
 
     @Override
     public Users save(Users users) {
@@ -17,18 +17,18 @@ public class UsersServiceImpl implements UserService{
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
+    public boolean delete(String ID) {
+        return usersDAO.deleteById(ID);
     }
 
     @Override
-    public Users findById(String s) {
-        return null;
+    public Users findById(String ID) {
+        return usersDAO.findById(ID);
     }
 
     @Override
     public List<Users> findAll() {
-        return List.of();
+        return usersDAO.findAll();
     }
 
     @Override
@@ -38,6 +38,9 @@ public class UsersServiceImpl implements UserService{
 
     @Override
     public Users findByEmail(String email) {
-        return null;
+        return findAll().stream()
+                .filter(users -> users.getEmail().equals(email))
+                .findFirst()
+                .orElse(null);
     }
 }

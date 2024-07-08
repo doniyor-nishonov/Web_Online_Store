@@ -4,10 +4,10 @@ import com.pdp.web_online_store.entity.picture.Picture;
 
 import java.util.List;
 
-public class PictureServiceImpl implements PictureService{
+public class PictureServiceImpl implements PictureService {
     @Override
-    public Picture save(Picture entity) {
-        return null;
+    public Picture save(Picture picture) {
+        return pictureDAO.save(picture);
     }
 
     @Override
@@ -16,17 +16,17 @@ public class PictureServiceImpl implements PictureService{
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
+    public boolean delete(String ID) {
+        return pictureDAO.deleteById(ID);
     }
 
     @Override
-    public Picture findById(String s) {
-        return null;
+    public Picture findById(String ID) {
+        return pictureDAO.findById(ID);
     }
 
     @Override
     public List<Picture> findAll() {
-        return List.of();
+        return pictureDAO.findAll();
     }
 }
