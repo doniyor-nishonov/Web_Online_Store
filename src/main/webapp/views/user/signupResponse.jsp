@@ -25,7 +25,7 @@
 </header>
 <main>
     <%
-        boolean check = Boolean.parseBoolean(request.getParameter("check"));
+        boolean check = (boolean)(request.getAttribute("check"));
         if (check) {
     %>
     <section class="response">
