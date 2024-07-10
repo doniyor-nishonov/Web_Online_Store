@@ -37,8 +37,10 @@
             <div class="product">
                 <form action="/product/info">
                     <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>">
-                    <h2><%=product.getName()%></h2>
-                    <h3>Price: $<%=product.getPrice()%></h3>
+                    <h2><%=product.getName()%>
+                    </h2>
+                    <h3>Price: $<%=product.getPrice()%>
+                    </h3>
                     <input type="hidden" name="productID" id="productID" value="<%=product.getId()%>">
                     <button type="submit">Info</button>
                 </form>
@@ -47,8 +49,5 @@
         </div>
     </section>
 </main>
-<footer>
-    <p>&copy; 2024 Online Shop. All rights reserved.</p>
-</footer>
 </body>
 </html>
