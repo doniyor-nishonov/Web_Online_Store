@@ -23,7 +23,7 @@ import java.util.UUID;
 @WebServlet(name = "CreateProductServlet", value = "/seller/createProduct")
 public class CreateProductServlet extends HttpServlet {
     private ProductService productService;
-    private Path rootPath = Path.of("/Users/user/Desktop/PDP_ACADEMY/pdp/ultimate/g40/projects/Web_Online_Store/src/main/webapp/resources/img");
+    private final Path rootPath = Path.of("/Users/user/Desktop/PDP");
 
     @Override
     public void init() throws ServletException {
