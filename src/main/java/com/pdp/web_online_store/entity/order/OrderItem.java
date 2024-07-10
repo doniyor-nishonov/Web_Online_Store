@@ -18,7 +18,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class OrderItem extends Auditable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Order order;
+    private Orders orders;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Product product;

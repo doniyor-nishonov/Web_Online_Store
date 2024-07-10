@@ -9,4 +9,7 @@ import java.util.List;
 public interface ProductService extends BaseService<Product, String> {
     ProductDAO productDAO = new ProductDAO();
     List<Product> getAllByCategory(String category);
+
+    List<Product> getByRandom(int count);
+
 }

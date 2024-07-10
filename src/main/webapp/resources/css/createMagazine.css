@@ -1,8 +1,14 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background: #f5f5f5; /* Light gray background */
+    animation: fadeIn 0.8s ease-in; /* Shorter animation duration */
 }
 
 header {
@@ -12,6 +18,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: fadeIn 1s ease-in-out; /* Shorter animation duration */
 }
 
 header .logo {
@@ -58,50 +65,50 @@ header .search-form button:hover {
     background-color: #777;
 }
 
-.products {
+.create-form {
     padding: 20px;
     background-color: #fff;
-    max-width: 1200px;
+    max-width: 600px;
     margin: 20px auto;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out; /* Shorter animation duration */
 }
 
-.products h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.product-list {
+.create-form form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
 }
 
-.product {
-    background-color: #f9f9f9;
+.create-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.create-form input, .create-form textarea {
+    padding: 10px;
+    margin-top: 5px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 10px;
-    width: calc(33% - 40px);
+    border-radius: 3px;
+    width: 100%;
     box-sizing: border-box;
-    text-align: center;
 }
 
-.product img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+.create-form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-.product h2 {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.product p {
-    margin: 5px 0;
+.create-form button:hover {
+    background-color: #218838;
 }
 
 footer {
@@ -112,4 +119,5 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
+    animation: fadeIn 1s ease-in-out; /* Shorter animation duration */
 }

@@ -1,4 +1,4 @@
-package com.pdp.web_online_store.servlets;
+package com.pdp.web_online_store.servlets.register;
 
 import com.pdp.web_online_store.entity.user.Users;
 import com.pdp.web_online_store.service.user.UserService;
@@ -13,7 +13,12 @@ import java.io.IOException;
 
 @WebServlet(name = "signup", urlPatterns = "/signup")
 public class SignupServlet extends HttpServlet {
-    private final UserService userService = new UsersServiceImpl();
+    private UserService userService;
+
+    @Override
+    public void init() throws ServletException {
+        userService = new UsersServiceImpl();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

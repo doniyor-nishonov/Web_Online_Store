@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="logo">Online Shop - Seller</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="createSeller.html">Create Magazine</a></li>
+            <li><a href="manageUsers.html">Create Product</a></li>
+            <li><a href="showProducts.html">Show Products</a></li>
+        </ul>
+    </nav>
+    <form class="search-form" action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search products...">
+        <button type="submit">Search</button>
+    </form>
+</header>
+<main>
+    <section class="products-list">
+        <h1>All Products</h1>
+        <!-- Sample product list -->
+        <div class="product">
+            <h3>Product Name</h3>
+            <p>Description of the product</p>
+            <p>Price: $20.00</p>
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+        <!-- More products can be added here dynamically -->
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Online Shop. All rights reserved.</p>
+</footer>
+</body>
+</html>

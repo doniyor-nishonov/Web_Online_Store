@@ -15,7 +15,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class Users extends Auditable {
     private String fullName;
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
     private String phoneNumber;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

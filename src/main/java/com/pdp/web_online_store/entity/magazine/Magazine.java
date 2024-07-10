@@ -2,6 +2,7 @@ package com.pdp.web_online_store.entity.magazine;
 
 import com.pdp.web_online_store.entity.Auditable;
 import com.pdp.web_online_store.entity.address.Address;
+import com.pdp.web_online_store.entity.product.Product;
 import com.pdp.web_online_store.entity.user.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -23,4 +26,7 @@ public class Magazine extends Auditable {
     private String description;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Address address;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "magazine")
+    private List<Product> products;
 }

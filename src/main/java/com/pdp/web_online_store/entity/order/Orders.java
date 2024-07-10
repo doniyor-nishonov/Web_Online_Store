@@ -2,8 +2,6 @@ package com.pdp.web_online_store.entity.order;
 
 import com.pdp.web_online_store.entity.Auditable;
 import com.pdp.web_online_store.entity.customer.Customer;
-import com.pdp.web_online_store.entity.user.Users;
-import com.pdp.web_online_store.enums.PaymentType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
-public class Order extends Auditable {
+public class Orders extends Auditable {
     private int quantity;
     private double totalPrice;
 
@@ -35,7 +33,7 @@ public class Order extends Auditable {
     private String orderDate;
     private String deliveryDate;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     // Ensure totalPrice is calculated based on OrderItems

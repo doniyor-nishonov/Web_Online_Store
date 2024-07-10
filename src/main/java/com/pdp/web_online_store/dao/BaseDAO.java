@@ -1,7 +1,6 @@
 package com.pdp.web_online_store.dao;
 
 import com.pdp.web_online_store.entity.Auditable;
-import com.pdp.web_online_store.entity.user.Users;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -39,9 +38,9 @@ public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
     }
 
     public T findById(@NonNull ID id) {
-        /*begin();*/
+        begin();
         T entity = em.find(persistenceClass, id);
-        /*commit();*/
+        commit();
         return entity;
     }
 

@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -23,4 +22,6 @@ public class Picture extends Auditable {
     private String mimeType;
     @Column(nullable = false)
     private long size;
+    @Column(nullable = false)
+    private String imageUrl;
 }

@@ -2,6 +2,7 @@ package com.pdp.web_online_store.service.product;
 
 import com.pdp.web_online_store.entity.product.Product;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,5 +37,12 @@ public class ProductServiceImpl implements ProductService {
         return findAll().stream()
                 .filter(product -> Objects.equals(product.getCategory().toString(), category))
                 .toList();
+    }
+
+    @Override
+    public List<Product> getByRandom(int count) {
+        List<Product> allProducts = productDAO.findAll();
+        Collections.shuffle(allProducts);
+        return allProducts.subList(0, Math.min(count, allProducts.size()));
     }
 }
