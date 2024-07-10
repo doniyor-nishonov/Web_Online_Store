@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.pdp.web_online_store.entity.magazine.Magazine" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 08/07/24
@@ -50,6 +51,18 @@
             <select id="category" name="category" required>
                 <% for (com.pdp.web_online_store.enums.Category cat : com.pdp.web_online_store.enums.Category.values()) { %>
                 <option value="<%= cat %>"><%= cat %>
+                </option>
+                <% } %>
+            </select>
+
+            <label for="magazine">Magazine:</label>
+            <select id="magazine" name="magazine" required>
+                <%
+                    @SuppressWarnings("unchecked")
+                    List<Magazine> magazines = (List<Magazine>) request.getAttribute("magazines");
+                    for (Magazine magazine : magazines) {
+                %>
+                <option value="<%= magazine.getName() %>"><%= magazine.getName() %>
                 </option>
                 <% } %>
             </select>
