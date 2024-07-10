@@ -64,6 +64,7 @@
                 %>
                 <option value="<%= magazine.getName() %>"><%= magazine.getName() %>
                 </option>
+                <input type="hidden" name="magazineID" value="<%=magazine.getId()%>">
                 <% } %>
             </select>
 

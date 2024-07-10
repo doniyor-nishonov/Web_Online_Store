@@ -3,8 +3,9 @@ package com.pdp.web_online_store.service.magazine;
 import com.pdp.web_online_store.entity.magazine.Magazine;
 
 import java.util.List;
+import java.util.Objects;
 
-public class MagazineServiceImpl implements MagazineService{
+public class MagazineServiceImpl implements MagazineService {
     @Override
     public Magazine save(Magazine magazine) {
         return magazineDAO.save(magazine);
@@ -28,5 +29,12 @@ public class MagazineServiceImpl implements MagazineService{
     @Override
     public List<Magazine> findAll() {
         return magazineDAO.findAll();
+    }
+
+    @Override
+    public List<Magazine> getMagazinesBySellerId(String userID) {
+        return findAll().stream()
+                .filter(magazine -> Objects.equals(magazine.getUsers().getId(), userID))
+                .toList();
     }
 }

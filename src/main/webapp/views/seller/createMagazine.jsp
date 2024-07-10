@@ -33,15 +33,12 @@
 <main>
     <section class="create-form">
         <h1>Create Magazine</h1>
-        <form action="/createMagazine" method="POST">
+        <form action="/seller/createMagazine" method="POST">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
 
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
-
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required>
 
             <button type="submit">Create Magazine</button>
         </form>

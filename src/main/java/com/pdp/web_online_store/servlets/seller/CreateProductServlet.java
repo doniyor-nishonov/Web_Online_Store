@@ -1,8 +1,11 @@
 package com.pdp.web_online_store.servlets.seller;
 
+import com.pdp.web_online_store.entity.magazine.Magazine;
 import com.pdp.web_online_store.entity.picture.Picture;
 import com.pdp.web_online_store.entity.product.Product;
 import com.pdp.web_online_store.enums.Category;
+import com.pdp.web_online_store.service.magazine.MagazineService;
+import com.pdp.web_online_store.service.magazine.MagazineServiceImpl;
 import com.pdp.web_online_store.service.product.ProductService;
 import com.pdp.web_online_store.service.product.ProductServiceImpl;
 import jakarta.servlet.ServletException;
@@ -17,22 +20,28 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.UUID;
 
 @MultipartConfig
 @WebServlet(name = "CreateProductServlet", value = "/seller/createProduct")
 public class CreateProductServlet extends HttpServlet {
     private ProductService productService;
+    private MagazineService magazineService;
     private final Path rootPath = Path.of("/Users/user/Desktop/PDP/IMG");
 
     @Override
     public void init() throws ServletException {
         productService = new ProductServiceImpl();
+        magazineService = new MagazineServiceImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userID = (String) req.getSession().getAttribute("userID");
+        List<Magazine> magazines = magazineService.getMagazinesBySellerId(userID);
         req.setAttribute("Category", Category.values());
+        req.setAttribute("magazines",magazines );
         req.getRequestDispatcher("/views/seller/createProduct.jsp").forward(req, resp);
     }
 
