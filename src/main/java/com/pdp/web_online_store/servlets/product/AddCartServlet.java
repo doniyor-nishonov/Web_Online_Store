@@ -55,7 +55,7 @@ public class AddCartServlet extends HttpServlet {
                 .build();
         Orders orders = Orders.builder()
                 .orderItems(List.of(orderItem))
-                .customer(customer)
+                .customers(List.of(customer))
                 .build();
         orderService.save(orders);
         req.getRequestDispatcher("/views/product/addCartResponse.jsp").forward(req, resp);

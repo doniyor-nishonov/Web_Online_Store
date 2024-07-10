@@ -22,8 +22,13 @@ public class Orders extends Auditable {
     private int quantity;
     private double totalPrice;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Customer customer;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "customer_orders",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
+    )
+    private List<Customer> customers = new ArrayList<>();
 
     private boolean isPaid;
     private boolean isDelivered;
@@ -44,4 +49,3 @@ public class Orders extends Auditable {
         this.totalPrice = this.orderItems.stream().mapToDouble(OrderItem::getTotal).sum();
     }
 }
-

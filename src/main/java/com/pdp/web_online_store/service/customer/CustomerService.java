@@ -7,4 +7,5 @@ import com.pdp.web_online_store.service.BaseService;
 public interface CustomerService extends BaseService<Customer, String> {
     CustomerDAO customerDAO = new CustomerDAO();
 
+    Customer getOrCreate(String userID);
 }
