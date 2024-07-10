@@ -8,9 +8,9 @@
             String userID = (String) session.getAttribute("userID");
             if (Objects.isNull(userID)) {
         %>
-        <li><a href="/register" class="register">Register</a></li>
+        <li><a href="/register" class="register"  style="color: white; background-color: green; padding: 10px 20px; text-decoration: none;">Register</a></li>
         <%} else {%>
-        <li><a href="/logOut"
+        <li><a href="/logout"
                style="color: white; background-color: black; padding: 10px 20px; text-decoration: none;">Log
             out</a></li>
         <%}%>

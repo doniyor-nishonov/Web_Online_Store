@@ -18,7 +18,7 @@
 <body>
 <div class="cont">
     <div class="form sign-in">
-        <h2>Sign In</h2>
+        <h2>Log in</h2>
         <form action="/login" method="post">
             <label>
                 <span>Email Address</span>
@@ -57,8 +57,8 @@
             </div>
 
             <div class="img-btn">
-                <span class="m-up">Sign In</span>
-                <span class="m-in">Sign Up</span>
+                <span class="m-up">Sign up</span>
+                <span class="m-in">Log in</span>
             </div>
         </div>
         <div class="form sign-up">

@@ -1,4 +1,8 @@
-<%--
+<%@ page import="com.pdp.web_online_store.service.user.UserService" %>
+<%@ page import="com.pdp.web_online_store.service.user.UsersServiceImpl" %>
+<%@ page import="com.pdp.web_online_store.entity.user.Users" %>
+<%@ page import="com.pdp.web_online_store.entity.order.Orders" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: sardor
   Date: 10/07/24
@@ -242,7 +246,8 @@
             <li><a href="#">Products</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="/profile" class="profile">Profile</a></li>
+            <li><a href="/" style="color: white; background-color: black; padding: 10px 20px; text-decoration: none;">Log out</a></li>
+
         </ul>
     </nav>
 </header>
@@ -252,33 +257,59 @@
         <div class="profile-details">
             <img src="../fragments/img/img_1.png" alt="User Image" class="profile-img">
             <div class="profile-info">
-                <h3>John Doe</h3>
-                <p>Full name: John Snow</p>
-                <p>Email: john.doe@example.com</p>
-                <p>Phone number: 123456</p>
-                <p>Address: 123 Main St, Anytown, USA</p>
-                <p>Accaunt created at</p>
+                <%String userId = (String) session.getAttribute("userID");
+
+                    UserService userService = new UsersServiceImpl();
+
+                    Users user = userService.findById(userId);
+
+                %>
+
+                <h3>  <%= user.getFullName()%></h3>
+                <p>Full name:   <%=user.getFullName() %></p>
+                <p>Email:   <%= user.getEmail()%></p>
+                <p>Phone number:   <%=user.getPhoneNumber()%></p>
+                <p>Address: <%= user.getAddress()%></p>
+                <p>Accaunt created at: <%= user.getCreatedAt()%></p>
                 <button class="edit-profile">Edit Profile</button>
             </div>
         </div>
     </section>
+
+
+
     <section class="order-history">
         <h2>Order History</h2>
         <div class="order-list">
+            <%
+                List<Orders> ordersList = (List<Orders>) request.getAttribute("orders");
+                if (ordersList != null) {
+                    for (Orders order : ordersList) {
+            %>
             <div class="order">
-                <h3>Order #12345</h3>
-                <p>Date: June 15, 2024</p>
-                <p>Total: $1200.00</p>
+                <h3>Order: <%=order.getCustomer()%></h3>
+                <p>Date: <%=order.getOrderDate()%></p>
+                <p>Order item: <%=order.getOrderItems()%></p>
+                <p>Total quantity: <%=order.getQuantity()%></p>
+                <p>Delivery address: <%=order.getDeliveryAddress()%></p>
+                <p>Total price: $<%=order.getTotalPrice()%></p>
+
                 <button class="view-order">View Order</button>
             </div>
-            <div class="order">
-                <h3>Order #12346</h3>
-                <p>Date: July 1, 2024</p>
-                <p>Total: $750.00</p>
-                <button class="view-order">View Order</button>
-            </div>
+            <%
+                }
+            } else {
+            %>
+            <p>No orders found.</p>
+            <%
+                }
+            %>
         </div>
     </section>
+
+
+
+
 </main>
 <footer>
     <p>&copy; 2024 Online Shop. All rights reserved.</p>
