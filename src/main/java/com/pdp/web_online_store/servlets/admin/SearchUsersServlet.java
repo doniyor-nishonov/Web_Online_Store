@@ -32,6 +32,6 @@ public class SearchUsersServlet extends HttpServlet {
         req.setAttribute("users", users);
 
         // Forward to the JSP page
-        req.getRequestDispatcher("/WEB-INF/views/admin/manageUsers.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/admin/manageUsers.jsp").forward(req, resp);
     }
 }
