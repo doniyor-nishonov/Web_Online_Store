@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,15 +14,21 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class Users extends Auditable {
     private String fullName;
+
     @Column(unique = true, nullable = false)
     private String email;
+
     @Column(nullable = false)
     private String password;
+
     private String phoneNumber;
+
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Address address;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -34,6 +39,6 @@ public class Users extends Auditable {
     }
 
     public enum Role {
-        ADMIN, USER, SELlER
+        ADMIN, USER, SELLER
     }
 }

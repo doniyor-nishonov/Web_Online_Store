@@ -12,4 +12,5 @@ public interface ProductService extends BaseService<Product, String> {
 
     List<Product> getByRandom(int count);
 
+    List<Product> getByOwnerId(String userID);
 }

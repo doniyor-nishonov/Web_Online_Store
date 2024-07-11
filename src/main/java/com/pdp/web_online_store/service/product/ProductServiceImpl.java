@@ -45,4 +45,11 @@ public class ProductServiceImpl implements ProductService {
         Collections.shuffle(allProducts);
         return allProducts.subList(0, Math.min(count, allProducts.size()));
     }
+
+    @Override
+    public List<Product> getByOwnerId(String userID) {
+        return findAll().stream()
+                .filter(product -> Objects.equals(product.getMagazine().getUsers().getId(), userID))
+                .toList();
+    }
 }

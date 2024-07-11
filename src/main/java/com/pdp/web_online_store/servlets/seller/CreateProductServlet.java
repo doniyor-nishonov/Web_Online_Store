@@ -28,7 +28,7 @@ import java.util.UUID;
 public class CreateProductServlet extends HttpServlet {
     private ProductService productService;
     private MagazineService magazineService;
-    private final Path rootPath = Path.of("/Users/sardor/Desktop/PDP/IMG");
+    private final Path rootPath = Path.of("/Users/user/Desktop/PDP/IMG");
 
     @Override
     public void init() throws ServletException {

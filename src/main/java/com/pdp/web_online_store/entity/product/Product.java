@@ -22,7 +22,7 @@ public class Product extends Auditable {
     private String description;
     private double price;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne
     private Magazine magazine;
 
     @Enumerated(EnumType.STRING)

@@ -1,18 +1,19 @@
 package com.pdp.web_online_store.service.orders;
 
-import com.pdp.web_online_store.entity.customer.Customer;
+import com.pdp.web_online_store.entity.customer.Cart;
 import com.pdp.web_online_store.entity.order.Orders;
 import com.pdp.web_online_store.entity.user.Users;
-import com.pdp.web_online_store.service.customer.CustomerService;
-import com.pdp.web_online_store.service.customer.CustomerServiceImpl;
+import com.pdp.web_online_store.service.customer.CartService;
+import com.pdp.web_online_store.service.customer.CartServiceImpl;
 import com.pdp.web_online_store.service.user.UserService;
 import com.pdp.web_online_store.service.user.UsersServiceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 public class OrderServiceImpl implements OrderService {
     private final UserService userService = new UsersServiceImpl();
-    private final CustomerService customerService = new CustomerServiceImpl();
+    private final CartService cartService = new CartServiceImpl();
 
     @Override
     public Orders save(Orders orders) {
@@ -41,14 +42,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Orders getOrCreate(String userID) {
-        Customer customer = customerService.getOrCreate(userID);
-        Users user = userService.findById(userID);
-        for (Orders order : findAll()) {
-            if (!order.isPaid()) {
+    public Orders getOrCreate(Orders order, Cart cart) {
+        List<Orders> ordersList = findAll();
+        Optional<Orders> existingOrder = ordersList.stream().filter(o -> o.getProduct().getId().equals(order.getProduct().getId()) &&
+                        order.getCart().getId().equals(cart.getId()) && !cart.isPaid())
+                .findFirst();
 
-            }
+        if (existingOrder.isPresent()) {
+            Orders foundOrder = existingOrder.get();
+            foundOrder.setQuantity(foundOrder.getQuantity() + order.getQuantity());
+            return foundOrder;
+        } else {
+            save(order);
+            return order;
         }
-        return null;
     }
 }
