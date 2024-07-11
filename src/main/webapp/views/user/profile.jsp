@@ -3,8 +3,6 @@
 <%@ page import="com.pdp.web_online_store.entity.user.Users" %>
 <%@ page import="com.pdp.web_online_store.entity.order.Orders" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Objects" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.time.format.DateTimeFormatter" %><%--
   Created by IntelliJ IDEA.
   User: sardor
