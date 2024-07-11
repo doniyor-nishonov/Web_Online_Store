@@ -3,7 +3,10 @@
 <%@ page import="com.pdp.web_online_store.entity.user.Users" %>
 <%@ page import="com.pdp.web_online_store.entity.order.Orders" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.time.format.DateTimeFormatter" %><%--
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="com.pdp.web_online_store.service.orders.OrderService" %>
+<%@ page import="com.pdp.web_online_store.service.orders.OrderServiceImpl" %>
+<%@ page import="com.pdp.web_online_store.entity.customer.Cart" %><%--
   Created by IntelliJ IDEA.
   User: sardor
   Date: 10/07/24
@@ -70,18 +73,23 @@
         </div>
     </section>
 
-
+    <%
+        OrderService orderService = new OrderServiceImpl();
+        @SuppressWarnings("unchecked")
+        List<Cart> carts = (List<Cart>) request.getAttribute("carts");
+        if (carts != null) {
+            for (Cart cart : carts) {
+    %>
     <section class="order-history">
         <h2>Order History</h2>
         <div class="order-list">
             <%
-                @SuppressWarnings("unchecked")
-                List<Orders> ordersList = (List<Orders>) request.getAttribute("orders");
-                if (ordersList != null) {
-                    for (Orders order : ordersList) {
+                List<Orders> ordersList = orderService.findAllOrdersByCartId(cart.getId());
+                for (Orders order : ordersList) {
             %>
             <div class="order">
-                <h3>Order: <%=order.getCart().isPaid() ? "Archive" : "Active"%>></h3>
+                <h4><%=order.getCart().isPaid() ? "Archive" : "Active"%>
+                </h4>
                 <img src="<%=order.getProduct().getPicture().getImageUrl()%>" alt="<%=order.getProduct().getName()%>">
                 <p>Product Name: <%=order.getProduct().getName()%>
                 </p>
@@ -89,19 +97,28 @@
                 </p>
                 <p>Total price: $<%=order.getTotalPrice()%>
                 </p>
-                <button class="view-order">View Order</button>
             </div>
-            <%
-                }
-            } else {
-            %>
-            <p>No orders found.</p>
+            <div>
+                <%
+                    if (!cart.isPaid()) {
+                %>
+                <form action="${pageContext.request.contextPath}/profile" method="post">
+                    <input type="hidden" name="cartID" value="<%=cart.getId()%>">
+                    <button type="submit">Purchase</button>
+                </form>
+                <%}%>
+            </div>
             <%
                 }
             %>
         </div>
     </section>
-
+    <%
+        }
+    } else {
+    %>
+    <p>No orders found.</p>
+    <%}%>
 
 </main>
 </body>

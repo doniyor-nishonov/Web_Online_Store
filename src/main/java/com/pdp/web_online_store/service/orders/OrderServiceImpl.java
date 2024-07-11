@@ -57,4 +57,12 @@ public class OrderServiceImpl implements OrderService {
             return order;
         }
     }
+
+    @Override
+    public List<Orders> findAllOrdersByCartId(String cartID) {
+        List<Orders> ordersList = findAll();
+        return ordersList.stream()
+                .filter(order -> order.getCart().getId().equals(cartID))
+                .toList();
+    }
 }

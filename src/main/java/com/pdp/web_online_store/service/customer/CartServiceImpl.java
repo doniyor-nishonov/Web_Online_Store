@@ -48,4 +48,12 @@ public class CartServiceImpl implements CartService {
                         .orderStatus(Cart.OrderStatus.NEW)
                         .build());
     }
+
+    @Override
+    public List<Cart> findAllCartsByUserId(String userID) {
+        List<Cart> cartList = findAll();
+        return cartList.stream()
+                .filter(cart -> Objects.equals(cart.getUsers().getId(), userID))
+                .toList();
+    }
 }
