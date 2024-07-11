@@ -1,5 +1,6 @@
 package com.pdp.web_online_store.servlets.seller;
 
+import com.pdp.web_online_store.entity.product.Product;
 import com.pdp.web_online_store.service.magazine.MagazineService;
 import com.pdp.web_online_store.service.magazine.MagazineServiceImpl;
 import com.pdp.web_online_store.service.product.ProductService;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ShowProductServlet", value = "/seller/showProduct")
 public class ShowProductServlet extends HttpServlet {
@@ -25,6 +27,9 @@ public class ShowProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userID = (String) req.getSession().getAttribute("userID");
+        List<Product> products = productService.getByOwnerId(userID);
+        req.setAttribute("products", products);
         req.getRequestDispatcher("/views/seller/showProducts.jsp").forward(req, resp);
     }
 

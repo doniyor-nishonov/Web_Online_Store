@@ -2,17 +2,11 @@ package com.pdp.web_online_store.entity.customer;
 
 import com.pdp.web_online_store.entity.Auditable;
 import com.pdp.web_online_store.entity.address.Address;
-import com.pdp.web_online_store.entity.order.Orders;
 import com.pdp.web_online_store.entity.user.Users;
 import com.pdp.web_online_store.enums.PaymentType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
-
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,16 +14,18 @@ import java.util.List;
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
-public class Customer extends Auditable {
+public class Cart extends Auditable {
 
-    @ManyToMany(mappedBy = "customers")
-    private List<Orders> orders;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false) // Corrected annotation
     private Users users;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Address address;
+
+    @Builder.Default
+    @Column(name = "is_paid")
+    private boolean isPaid = false;
 
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;

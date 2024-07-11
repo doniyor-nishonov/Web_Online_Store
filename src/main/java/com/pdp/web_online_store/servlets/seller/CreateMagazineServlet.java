@@ -38,7 +38,7 @@ public class CreateMagazineServlet extends HttpServlet {
         Users users = userService.findById(userID);
         Magazine magazine = magazineMapping(name, description, users);
         magazineService.save(magazine);
-        resp.sendRedirect("/seller/showProducts");
+        resp.sendRedirect("/seller/showProduct");
     }
 
     private static Magazine magazineMapping(String name, String description, Users users) {

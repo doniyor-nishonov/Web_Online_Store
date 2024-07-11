@@ -28,7 +28,7 @@ import java.util.UUID;
 public class CreateProductServlet extends HttpServlet {
     private ProductService productService;
     private MagazineService magazineService;
-    private final Path rootPath = Path.of("/Users/user/Desktop/PDP/IMG");
+    private final Path rootPath = Path.of("/Users/user/Desktop/PDP_ACADEMY/pdp/ultimate/g40/projects/Web_Online_Store/src/main/webapp/resources/img");
 
     @Override
     public void init() throws ServletException {
@@ -41,7 +41,7 @@ public class CreateProductServlet extends HttpServlet {
         String userID = (String) req.getSession().getAttribute("userID");
         List<Magazine> magazines = magazineService.getMagazinesBySellerId(userID);
         req.setAttribute("Category", Category.values());
-        req.setAttribute("magazines",magazines );
+        req.setAttribute("magazines", magazines);
         req.getRequestDispatcher("/views/seller/createProduct.jsp").forward(req, resp);
     }
 
@@ -51,6 +51,8 @@ public class CreateProductServlet extends HttpServlet {
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
         int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String magazineID = req.getParameter("magazineID");
+        Magazine magazine = magazineService.findById(magazineID);
         Category category = Category.valueOf(req.getParameter("category"));
         Part part = req.getPart("image");
         Picture picture = getPicture(part);
@@ -60,6 +62,7 @@ public class CreateProductServlet extends HttpServlet {
                 .price(price)
                 .category(category)
                 .picture(picture)
+                .magazine(magazine)
                 .stockQuantity(quantity)
                 .build();
         productService.save(product);

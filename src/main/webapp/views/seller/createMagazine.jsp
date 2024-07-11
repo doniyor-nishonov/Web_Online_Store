@@ -34,8 +34,8 @@
     <section class="create-form">
         <h1>Create Magazine</h1>
         <form action="/seller/createMagazine" method="POST">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
