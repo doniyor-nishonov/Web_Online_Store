@@ -83,19 +83,14 @@
                     for (Orders order : ordersList) {
             %>
             <div class="order">
-                <h3>Order: <%=order.getCarts()%>
-                </h3>
-                <p>Date: <%=order.getOrderDate()%>
-                </p>
-                <p>Order item: <%=order.getOrderItems()%>
+                <h3>Order: <%=order.getCart().isPaid() ? "Archive" : "Active"%>></h3>
+                <img src="<%=order.getProduct().getPicture().getImageUrl()%>" alt="<%=order.getProduct().getName()%>">
+                <p>Product Name: <%=order.getProduct().getName()%>
                 </p>
                 <p>Total quantity: <%=order.getQuantity()%>
                 </p>
-                <p>Delivery address: <%=order.getDeliveryAddress()%>
-                </p>
                 <p>Total price: $<%=order.getTotalPrice()%>
                 </p>
-
                 <button class="view-order">View Order</button>
             </div>
             <%
