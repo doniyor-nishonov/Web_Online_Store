@@ -2,7 +2,8 @@
 <nav>
     <ul>
         <li><a href="/products">Products</a></li>
-        <li><a href="/">About</a></li>
+        <li><a href="/seller/menu">Seller</a></li>
+        <li><a href="/admin/home">Admin</a></li>
         <li><a href="/profile">Profile</a></li>
         <%
             String userID = (String) session.getAttribute("userID");

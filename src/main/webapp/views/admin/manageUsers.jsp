@@ -12,6 +12,7 @@
     <div class="logo">Online Shop - Admin</div>
     <nav>
         <ul>
+            <li><a href="/">Main menu</a></li>
             <li><a href="/admin/home">Home</a></li>
             <li><a href="/admin/createSeller">Create Seller</a></li>
             <li><a href="/admin/manageUsers">Manage Users</a></li>

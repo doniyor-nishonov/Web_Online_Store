@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,7 @@
     <div class="logo">Online Shop - Seller</div>
     <nav>
         <ul>
+            <li><a href="/">Main menu</a></li>
             <li><a href="/seller/menu">Home</a></li>
             <li><a href="/seller/createMagazine">Create Magazine</a></li>
             <li><a href="/seller/createProduct">Create Product</a></li>
@@ -75,8 +77,6 @@
         </form>
     </section>
 </main>
-<footer>
-    <p>&copy; 2024 Online Shop. All rights reserved.</p>
-</footer>
+
 </body>
 </html>

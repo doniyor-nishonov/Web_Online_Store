@@ -20,6 +20,7 @@
     <div class="logo">Online Shop - Seller</div>
     <nav>
         <ul>
+            <li><a href="/">Main menu</a></li>
             <li><a href="/seller/menu">Home</a></li>
             <li><a href="/seller/createMagazine">Create Magazine</a></li>
             <li><a href="/seller/createProduct">Create Product</a></li>
