@@ -6,13 +6,7 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="com.pdp.web_online_store.service.orders.OrderService" %>
 <%@ page import="com.pdp.web_online_store.service.orders.OrderServiceImpl" %>
-<%@ page import="com.pdp.web_online_store.entity.customer.Cart" %><%--
-  Created by IntelliJ IDEA.
-  User: sardor
-  Date: 10/07/24
-  Time: 12:07
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.pdp.web_online_store.entity.customer.Cart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +18,6 @@
 </head>
 <body>
 <header>
-    <h1 class="logo">Online Shop</h1>
-    <form class="search-form" action="/search" method="GET">
-        <input type="text" name="query" class="search-input" placeholder="Search...">
-        <button type="submit" class="search-button">Search</button>
-    </form>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
