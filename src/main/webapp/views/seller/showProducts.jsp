@@ -34,10 +34,12 @@
         %>
         <div class="product animate__animated animate__zoomIn">
             <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>">
-            <h3><%= product.getName() %></h3>
-            <p><%= product.getDescription() %></p>
-            <p>Price: $<%= product.getPrice() %></p>
-            <button class="animate__animated animate__pulse">Edit</button>
+            <h3><%= product.getName() %>
+            </h3>
+            <p><%= product.getDescription() %>
+            </p>
+            <p>Price: $<%= product.getPrice() %>
+            </p>
             <button class="animate__animated animate__pulse">Delete</button>
         </div>
         <%
@@ -50,8 +52,5 @@
         %>
     </section>
 </main>
-<footer class="animate__animated animate__fadeInUp">
-    <p>&copy; 2024 Online Shop. All rights reserved.</p>
-</footer>
 </body>
 </html>

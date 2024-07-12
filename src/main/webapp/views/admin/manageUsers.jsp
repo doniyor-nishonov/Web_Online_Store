@@ -1,14 +1,11 @@
-<%@ page import="com.pdp.web_online_store.entity.user.Users" %>
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users</title>
-    <link rel="stylesheet" href="../../resources/css/adminPage.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css">
+    <link rel="stylesheet" href="../../resources/css/adminPage.css">
     <style>
         body {
             margin: 0;
@@ -24,42 +21,40 @@
             left: 0;
             z-index: -1;
         }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
 
-        .button-block, .button-delete {
-            padding: 10px 20px;
-            margin: 5px;
+        .action-buttons button[type="submit"] {
+            padding: 8px 16px;
             border: none;
             border-radius: 5px;
-            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
-        .button-block {
-            background-color: #ffcc00;
-            color: #333;
+        .action-buttons button[type="submit"]:hover {
+            filter: brightness(0.9);
         }
 
-        .button-delete {
-            background-color: #ff4444;
-            color: #fff;
+        .action-buttons .activate {
+            background-color: #28a745;
+            color: white;
         }
 
-        .button-block:hover {
-            background-color: #ffdd33;
-            transform: scale(1.05);
+        .action-buttons .deactivate {
+            background-color: #ffc107;
+            color: #212529;
         }
 
-        .button-delete:hover {
-            background-color: #ff6666;
-            transform: scale(1.05);
+        .action-buttons .delete {
+            background-color: #dc3545;
+            color: white;
         }
 
-        .button-block:focus, .button-delete:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
     </style>
+
 </head>
 <body>
 <header class="animate__animated animate__fadeInDown">
@@ -76,10 +71,9 @@
 <main>
     <section class="manage-users animate__animated animate__fadeIn">
         <h1 class="animate__animated animate__bounceInLeft">Manage Users</h1>
-        <form class="search-form animate__animated animate__slideInRight"
-              action="${pageContext.request.contextPath}/admin/manageUsers" method="GET">
+        <form action="${pageContext.request.contextPath}/admin/manageUsers" method="GET">
             <input type="text" name="query" placeholder="Search users by name or email...">
-            <button type="submit">Search</button>
+            <button type="submit" class="button-block animate__animated animate__bounceIn">Search</button>
         </form>
         <table class="animate__animated animate__fadeInUp">
             <thead>
@@ -92,6 +86,9 @@
             </tr>
             </thead>
             <tbody>
+            <%@ page import="com.pdp.web_online_store.entity.user.Users" %>
+            <%@ page import="java.util.List" %>
+            <%@ page contentType="text/html;charset=UTF-8" language="java" %>
             <%
                 try {
                     @SuppressWarnings("unchecked")
@@ -101,23 +98,46 @@
                         for (Users user : users) {
             %>
             <tr class="animate__animated animate__fadeIn">
-                <td><%= i++ %></td>
-                <td><%= user.getFullName() %></td>
-                <td><%= user.getEmail() %></td>
+                <td><%= i++ %>
+                </td>
+                <td><%= user.getFullName() %>
+                </td>
+                <td><%= user.getEmail() %>
+                </td>
                 <td>
-                    <form action="${pageContext.request.contextPath}/admin/changeUserRole" method="POST">
+                    <form action="${pageContext.request.contextPath}/admin/manageUsers" method="POST">
                         <select name="role" onchange="this.form.submit()">
-                            <option value="user" <%= "user".equals(user.getRole()) ? "selected" : "" %>>User</option>
-                            <option value="admin" <%= "admin".equals(user.getRole()) ? "selected" : "" %>>Admin</option>
-                            <option value="seller" <%= "seller".equals(user.getRole()) ? "selected" : "" %>>Seller</option>
+                            <option value="USER" <%= "user".equals(user.getRole()) ? "selected" : "" %>>User</option>
+                            <option value="ADMIN" <%= "admin".equals(user.getRole()) ? "selected" : "" %>>Admin</option>
+                            <option value="SELLER" <%= "seller".equals(user.getRole()) ? "selected" : "" %>>Seller
+                            </option>
                         </select>
-                        <input type="hidden" name="userId" value="<%= user.getId() %>">
+                        <input type="hidden" name="userID" value="<%= user.getId() %>">
+                        <input type="hidden" name="action" value="role">
                     </form>
                 </td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/admin/activate?userID=<%= user.getId() %>" class="button-block animate__animated animate__bounceIn">Active</a>
-                    <a href="${pageContext.request.contextPath}/admin/deleteUser?userID=<%= user.getId() %>" class="button-delete animate__animated animate__bounceIn" onclick="return confirm('Are you sure?')">Delete</a>
+
+                <td class="action-buttons">
+                    <% if (user.getStatus().equals(Users.Status.BLOCKED)) { %>
+                    <form method="post" action="${pageContext.request.contextPath}/admin/manageUsers">
+                        <input type="hidden" name="userID" value="<%= user.getId() %>">
+                        <input type="hidden" name="action" value="active">
+                        <button type="submit" class="activate">Activate</button>
+                    </form>
+                    <% } else { %>
+                    <form method="post" action="${pageContext.request.contextPath}/admin/manageUsers">
+                        <input type="hidden" name="userID" value="<%= user.getId() %>">
+                        <input type="hidden" name="action" value="deActive">
+                        <button type="submit" class="deactivate">Deactivate</button>
+                    </form>
+                    <% } %>
+                    <form method="post" action="${pageContext.request.contextPath}/admin/manageUsers">
+                        <input type="hidden" name="userID" value="<%= user.getId() %>">
+                        <input type="hidden" name="action" value="delete">
+                        <button type="submit" class="delete" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
                 </td>
+
             </tr>
             <%
                         }

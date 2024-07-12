@@ -9,88 +9,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shop</title>
-    <link rel="stylesheet" href="../resources/css/styles.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Navbar styles */
-        nav {
-            background-color: #000;
-            padding: 15px 0;
-        }
-
-        .navbar {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .navbar li {
-            margin: 0 15px;
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: #555;
-            transform: translateY(-3px);
-        }
-
-        .register {
-            background-color: green;
-            color: white;
-        }
-
-        .logout {
-            background-color: black;
-            color: white;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-    </style>
+    <title>Online Sneaker Shop</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
 </head>
 <body>
 <header>
     <div class="container">
-        <h1 class="logo">Online Shop</h1>
+        <h1 class="logo">Online Sneaker Shop</h1>
         <form class="search-form" action="${pageContext.request.contextPath}/searchProduct" method="GET">
             <input type="text" name="query" class="search-input" placeholder="Search...">
             <button type="submit" class="search-button">Search</button>
@@ -120,93 +45,95 @@
                 %>
                 <li><a href="${pageContext.request.contextPath}/register" class="register">Register</a></li>
                 <%} else {%>
-                <li><a href="${pageContext.request.contextPath}/logout" class="logout">Log out</a></li>
-                <%}%>
+                <li><a href="${pageContext.request.contextPath}/logout" class="logout">Logout</a></li>
+                <%} %>
             </ul>
         </nav>
     </div>
 </header>
-<main>
-    <section class="hero">
-        <div class="container">
-            <h1>Welcome to Our Online Shop</h1>
-            <p>Find the best products at unbeatable prices!</p>
+
+<section class="hero">
+    <div class="container">
+        <h1>Welcome to Our Sneaker Shop</h1>
+        <p>Find the best sneakers at the most affordable prices</p>
+        <a href="${pageContext.request.contextPath}/products" class="cta-button">Shop Now</a>
+    </div>
+</section>
+
+<section class="products">
+    <div class="container">
+        <h2>Featured Products</h2>
+        <div class="product-list">
+            <%
+                ProductService productService = new ProductServiceImpl();
+                List<Product> products = productService.findAll();
+                for (Product product : products) {
+            %>
+            <div class="product">
+                <form action="${pageContext.request.contextPath}/product/info" method="GET">
+                    <input type="hidden" name="productID" value="<%= product.getId() %>">
+                    <button type="submit" class="product-button">
+                        <img src="<%= product.getPicture().getImageUrl() %>" alt="Sneaker Image">
+                    </button>
+                </form>
+                <h3><%= product.getName() %></h3>
+                <p><%= product.getPrice() %> $</p>
+            </div>
+            <% } %>
         </div>
-    </section>
-    <section class="products">
-        <div class="container">
-            <h2>Featured Products</h2>
-            <div class="product-list">
-                <%
-                    ProductService productService = new ProductServiceImpl();
-                    List<Product> products = productService.findAll();
-                    for (Product product : products) {
-                %>
-                <div class="product">
-                    <img src="<%=product.getPicture().getImageUrl()%>" alt="Product">
-                    <h3><%=product.getName()%></h3>
-                    <p>$<%=product.getPrice()%></p>
-                    <form action="${pageContext.request.contextPath}/product/info" method="GET" style="display: none;">
-                        <input type="hidden" name="productID" value="<%=product.getId()%>">
-                        <button type="submit">View Details</button>
-                    </form>
-                </div>
-                <%}%>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-content">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6846892987535!2d106.68562427473483!3d10.762622060915134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292f133edb%3A0xeeb5a2a2a2bdee4!2sBen%20Thanh%20Market!5e0!3m2!1sen!2s!4v1625146581905!5m2!1sen!2s"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="contact-form">
+                <form action="${pageContext.request.contextPath}/contact" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </div>
-    </section>
-    <section class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <div class="contact-content">
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9999481930735!2d2.292292315674767!3d48.85884407928744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f9e1f7a9f1b%3A0x40b82c3688b86118!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1618333386634!5m2!1sen!2sfr"
-                            width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <div class="contact-form">
-                    <form action="" method="post">
-                        <input type="text" placeholder="Name" required>
-                        <input type="email" placeholder="Email" required>
-                        <input type="tel" placeholder="Phone" required>
-                        <textarea placeholder="Message" required></textarea>
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+    </div>
+</section>
+
 <footer>
-    <div class="container footer-content">
-        <div class="about-us">
-            <h3>About Us</h3>
-            <p>Welcome to our shop! We are dedicated to providing the best quality products and exceptional customer
-                service. Our journey started with a passion for excellence and a commitment to our customers. Thank you
-                for choosing us!</p>
-        </div>
-        <div class="need-help">
-            <h3>Need Help</h3>
-            <p>If you have any questions or need assistance, feel free to reach out to our support team. We are here to
-                help you with your purchases, returns, and any other inquiries you may have. Your satisfaction is our
-                priority.</p>
-        </div>
-        <div class="contact-us">
-            <h3>Contact Us</h3>
-            <p>123 Main Street, London, UK</p>
-            <p>+01 12345678901</p>
-            <p>support@ourshop.com</p>
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <h3>About Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
+                    cursus ante dapibus diam.</p>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <p>Follow us on social media</p>
+                <div>
+                    <a href="/">Facebook</a>
+                    <a href="/">Twitter</a>
+                    <a href="/">Instagram</a>
+                </div>
+            </div>
+            <div>
+                <h3>Subscribe</h3>
+                <p>Get the latest news and offers</p>
+                <form action="${pageContext.request.contextPath}/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2024 All Rights Reserved by Our Shop</p>
+        <p>&copy; 2024 Online Sneaker Shop. All Rights Reserved.</p>
     </div>
 </footer>
-<script>
-    document.querySelectorAll('.product').forEach(product => {
-        product.addEventListener('click', () => {
-            product.querySelector('form').submit();
-        });
-    });
-</script>
 </body>
 </html>

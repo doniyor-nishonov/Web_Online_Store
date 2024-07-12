@@ -62,7 +62,9 @@ public class UsersServiceImpl implements UserService {
     @Override
     public List<Users> findByName(String query) {
         return findAll().stream()
-                .filter(users -> StringUtils.contains(users.getFullName(), query))
+                .filter(users -> StringUtils.contains(users.getFullName(), query)
+                        && !users.getRole().equals(Users.Role.ADMIN)
+                )
                 .toList();
     }
 }

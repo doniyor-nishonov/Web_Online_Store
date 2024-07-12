@@ -34,8 +34,18 @@ public class ManageUsersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getServletPath());
-        System.out.println(req.getContextPath());
-        System.out.println(req.getRequestURI());
+        String action = req.getParameter("action");
+        String userID = req.getParameter("userID");
+        Users user = userService.findById(userID);
+        Users.Role role = Users.Role.valueOf(req.getParameter("role"));
+        System.out.println(action);
+        switch (action) {
+            case "active" -> user.setStatus(Users.Status.ACTIVE);
+            case "deActive" -> user.setStatus(Users.Status.BLOCKED);
+            case "delete" -> userService.delete(userID);
+            case "role" -> user.setRole(role);
+        }
+        userService.update(user);
+        req.getRequestDispatcher("/views/admin/manageUsers.jsp").forward(req, resp);
     }
 }
