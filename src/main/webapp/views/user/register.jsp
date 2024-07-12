@@ -19,7 +19,7 @@
 <div class="cont">
     <div class="form sign-in">
         <h2>Log in</h2>
-        <form action="/login" method="post">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             <label>
                 <span>Email Address</span>
                 <input type="email" name="email">

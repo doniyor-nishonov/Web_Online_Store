@@ -13,13 +13,13 @@
     <div class="logo">Online Shop</div>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/products">Products</a></li>
+            <li><a href="${pageContext.request.contextPath}/about">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
         </ul>
     </nav>
-    <form class="search-form" action="/search" method="GET">
+    <form class="search-form" action="${pageContext.request.contextPath}/searchProduct" method="GET">
         <input type="text" name="query" placeholder="Search products...">
         <button type="submit">Search</button>
     </form>
@@ -32,17 +32,12 @@
         <div class="product-details">
             <div class="product-images">
                 <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>" class="main-image">
-                <div class="thumbnail-images">
-                    <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>" class="thumbnail">
-                    <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>" class="thumbnail">
-                    <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>" class="thumbnail">
-                </div>
             </div>
             <div class="product-text">
                 <h1><%=product.getName()%></h1>
                 <h3>Price: $<%=product.getPrice()%></h3>
                 <p><%=product.getDescription()%></p>
-                <form action="/addCart" method="POST">
+                <form action="${pageContext.request.contextPath}/addCart" method="POST">
                     <div class="quantity">
                         <label for="quantity">Quantity:</label>
                         <input type="number" id="quantity" name="quantity" value="1" min="1">

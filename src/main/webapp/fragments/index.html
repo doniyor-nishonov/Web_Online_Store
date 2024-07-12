@@ -1,221 +1,66 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzum Market</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ffffff;
-            padding: 10px 20px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .header .left, .header .right {
-            display: flex;
-            align-items: center;
-        }
-        .header .left span, .header .right span {
-            margin-right: 15px;
-            color: #333;
-        }
-        .header .right span {
-            cursor: pointer;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        .logo h1 {
-            color: #6a1b9a;
-            font-size: 24px;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #6a1b9a;
-            padding: 10px 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .nav a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
-        }
-        .nav a:hover {
-            background-color: #4a148c;
-        }
-        .banner {
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-        .banner img {
-            width: 100%;
-            height: auto;
-        }
-        .banner .text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .banner .text h1 {
-            font-size: 2em;
-            margin: 0;
-        }
-        .banner .text p {
-            font-size: 1.2em;
-        }
-        .highlight {
-            background-color: #ffeb3b;
-            color: #333;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .popular-section {
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-        }
-        .popular-section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .product-card {
-            display: inline-block;
-            width: 200px;
-            margin: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .product-card img {
-            width: 100%;
-            height: auto;
-        }
-        .product-card .product-info {
-            padding: 10px;
-        }
-        .product-card .product-info h3 {
-            font-size: 16px;
-            margin: 10px 0;
-        }
-        .product-card .product-info p {
-            color: #6a1b9a;
-            font-size: 14px;
-            margin: 5px 0;
-        }
-        .product-card .product-info .price {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .product-card .product-info .old-price {
-            text-decoration: line-through;
-            color: #aaa;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-    </style>
+    <title>Online Shop</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="header">
-    <div class="left">
-        <span>Город: Ташкент</span>
-        <span>Пункты выдачи</span>
+<header>
+    <div class="container">
+        <h1 class="logo">Online Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#" class="register">Sign Up</a></li>
+            </ul>
+        </nav>
     </div>
-    <div class="logo">
-        <img src="https://via.placeholder.com/40" alt="Uzum Market Logo">
-        <h1>Uzum Market</h1>
-    </div>
-    <div class="right">
-        <span>Продавайте на Uzum</span>
-        <span>Вопрос-ответ</span>
-        <span>Мои заказы</span>
-        <span>Русский</span>
-        <span id="loginBtn">Войти</span>
-    </div>
-</div>
+</header>
 
-<div class="nav">
-    <a href="#">Каталог</a>
-    <a href="#">Распродажа</a>
-    <a href="#">Прохлада в доме</a>
-    <a href="#">Бассейны</a>
-    <a href="#">Всё для авто</a>
-    <a href="#">Электроника</a>
-    <a href="#">Бытовая техника</a>
-    <a href="#">Одежда</а>
-        <a href="#">Обувь</a>
-        <a href="#">Аксессуары</a>
-        <a href="#">Красота и уход</a>
-        <a href="#">Ещё</a>
-</div>
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Our Online Shop</h1>
+            <p>Discover the latest trends and best deals!</p>
+        </div>
+    </section>
 
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="../fragments/img/product-img1.jpg" alt="Product 1">
+                    <h3>Product Name</h3>
+                    <p>$120.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="../fragments/img/product-img2.jpg" alt="Product 2">
+                    <h3>Product Name</h3>
+                    <p>$80.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="../fragments/img/product-img3.jpg" alt="Product 3">
+                    <h3>Product Name</h3>
+                    <p>$50.00</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
-<div class="popular-section">
-    <h2>Популярное</h2>
-    <div class="product-card">
-        <img src="https://via.placeholder.com/200x200" alt="Пылесос Bosch BGC21X300">
-        <div class="product-info">
-            <h3>Пылесос Bosch BGC21X300</h3>
-            <p>4.6 (56 отзывов)</p>
-            <p class="price"><span class="old-price">3 930 000</span> 2 199 000 сум</p>
-        </div>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Online Shop. All rights reserved.</p>
     </div>
-    <div class="product-card">
-        <img src="https://via.placeholder.com/200x200" alt="Средство для мытья посуды Fairy, лимон, 450 мл">
-        <div class="product-info">
-            <h3>Средство для мытья посуды Fairy, лимон, 450 мл</h3>
-            <p>5.0 (7295 отзывов)</p>
-            <p class="price">12 000 сум</p>
-        </div>
-    </div>
-    <div class="product-card">
-        <img src="https://via.placeholder.com/200x200" alt="Гель для душа Palmolive Арома настроение, 250 мл">
-        <div class="product-info">
-            <h3>Гель для душа Palmolive Арома настроение, 250 мл</h3>
-            <p>5.0 (18 отзывов)</p>
-            <p class="price"><span class="old-price">45 000</span> 30 000 сум</p>
-        </div>
-    </div>
-    <div class="product-card">
-        <img src="https://via.placeholder.com/200x200" alt="Гель для душа и ванны Yves Rocher Лаванда и Ежевика, 200 мл">
-        <div class="product-info">
-            <h3>Гель для душа и ванны Yves Rocher Лаванда и Ежевика, 200 мл</h3>
-            <p>4.9 (12 отзывов)</p>
-            <p class="price"><span class="old-price">81 000</span> 55 000 сум</p>
-        </div>
-    </div>
-    <div class="product-card">
-        <img src="https://via.placeholder.com/200x200" alt="Безалкогольный напиток Barbican Гранат, 330 мл">
-        <div class="product-info">
-            <h3>Безалкогольный напиток Barbican Гранат, 330 мл</h3>
-            <p>3.7 (6 отзывов)</p>
-            <p class="price"><span class="old-price">20 000</span> 16 000 сум</p>
-        </div>
-    </div>
-</div>
+</footer>
 
 </body>
 </html>

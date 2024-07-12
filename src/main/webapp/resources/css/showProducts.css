@@ -77,7 +77,17 @@ header .search-form button:hover {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #fafafa;
+    background-color: #fff; /* Background color set to white */
+}
+
+.product img {
+    max-width: 100px; /* Adjust the size of the images */
+    max-height: 100px;
+    display: block;
+    margin: 0 auto 10px auto; /* Center the image */
+    background-color: #fff; /* Set the background color of the image container */
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .product h3 {

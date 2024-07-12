@@ -23,7 +23,7 @@
     <section class="login-failed">
         <h1>Login Failed</h1>
         <p>Your username or password is incorrect. Please try again.</p>
-        <a href="/register">Go back to Login</a>
+        <a href="${pageContext.request.contextPath}/register">Go back to Login</a>
     </section>
 </main>
 <footer>

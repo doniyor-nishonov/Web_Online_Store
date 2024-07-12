@@ -21,22 +21,18 @@
     <div class="logo">Online Shop - Seller</div>
     <nav>
         <ul>
-            <li><a href="/">Main menu</a></li>
-            <li><a href="/seller/menu">Home</a></li>
-            <li><a href="/seller/createMagazine">Create Magazine</a></li>
-            <li><a href="/seller/createProduct">Create Product</a></li>
-            <li><a href="/seller/showProduct">Show Products</a></li>
+            <li><a href="${pageContext.request.contextPath}/">Main menu</a></li>
+            <li><a href="${pageContext.request.contextPath}/seller/menu">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/seller/createMagazine">Create Magazine</a></li>
+            <li><a href="${pageContext.request.contextPath}/seller/createProduct">Create Product</a></li>
+            <li><a href="${pageContext.request.contextPath}/seller/showProduct">Show Products</a></li>
         </ul>
     </nav>
-    <form class="search-form" action="/search" method="GET">
-        <input type="text" name="query" placeholder="Search products...">
-        <button type="submit">Search</button>
-    </form>
 </header>
 <main>
     <section class="create-form">
         <h1>Create Product</h1>
-        <form action="/seller/createProduct" method="POST" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/seller/createProduct" method="POST" enctype="multipart/form-data">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 

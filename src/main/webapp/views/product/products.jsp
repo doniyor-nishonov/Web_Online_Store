@@ -14,13 +14,13 @@
     <div class="logo">Online Shop</div>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/products">Products</a></li>
+            <li><a href="${pageContext.request.contextPath}/">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
         </ul>
     </nav>
-    <form class="search-form" action="/search" method="GET">
+    <form class="search-form" action="${pageContext.request.contextPath}/searchProduct" method="GET">
         <input type="text" name="query" placeholder="Search products...">
         <button type="submit">Search</button>
     </form>
@@ -35,7 +35,7 @@
                 for (Product product : products) {
             %>
             <div class="product">
-                <form action="/product/info">
+                <form action="${pageContext.request.contextPath}/product/info">
                     <img src="<%=product.getPicture().getImageUrl()%>" alt="<%=product.getName()%>">
                     <h2><%=product.getName()%>
                     </h2>

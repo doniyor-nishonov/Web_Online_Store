@@ -12,6 +12,9 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getServletPath());
+        System.out.println(req.getRequestURI());
+        System.out.println(req.getRequestURL());
         req.getRequestDispatcher("views/user/register.jsp").forward(req, resp);
     }
 }

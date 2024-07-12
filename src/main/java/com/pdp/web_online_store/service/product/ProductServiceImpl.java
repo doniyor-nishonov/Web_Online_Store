@@ -1,6 +1,7 @@
 package com.pdp.web_online_store.service.product;
 
 import com.pdp.web_online_store.entity.product.Product;
+import com.pdp.web_online_store.utils.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,6 +51,14 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getByOwnerId(String userID) {
         return findAll().stream()
                 .filter(product -> Objects.equals(product.getMagazine().getUsers().getId(), userID))
+                .toList();
+    }
+
+    @Override
+    public List<Product> findByName(String query) {
+        List<Product> products = findAll();
+        return products.stream()
+                .filter(product -> StringUtils.contains(product.getName(), query))
                 .toList();
     }
 }

@@ -2,13 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+    background: linear-gradient(to bottom right, #3e4bd5, #338ccc);
     animation: gradientAnimation 10s infinite alternate;
 }
 
 @keyframes gradientAnimation {
-    0% { background: linear-gradient(to bottom right, #ffecd2, #fcb69f); }
-    100% { background: linear-gradient(to bottom right, #fcb69f, #ffecd2); }
+    0% { background: linear-gradient(to bottom right, #3e4bd5, #338ccc); }
+    100% { background: linear-gradient(to bottom right, #3e4bd5, #338ccc); }
 }
 
 header {

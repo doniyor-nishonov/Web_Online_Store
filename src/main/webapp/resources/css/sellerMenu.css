@@ -3,9 +3,15 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #f3ec78, #af4261);
-    animation: backgroundAnimation 10s infinite alternate;
+    background: linear-gradient(to bottom right, #3e4bd5, #338ccc);
+    animation: gradientAnimation 10s infinite alternate;
 }
+
+@keyframes gradientAnimation {
+    0% { background: linear-gradient(to bottom right, #3e4bd5, #338ccc); }
+    100% { background: linear-gradient(to bottom right, #3e4bd5, #338ccc); }
+}
+
 
 @keyframes backgroundAnimation {
     0% { background-position: 0% 50%; }
@@ -19,18 +25,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    animation: fadeIn 2s;
 }
 
 header .logo {
     font-size: 24px;
 }
 
+header nav {
+    text-align: center; /* Center align the navigation */
+}
+
 header nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: inline-flex; /* Display menu items inline */
+    justify-content: center; /* Center align horizontally */
 }
 
 header nav ul li {

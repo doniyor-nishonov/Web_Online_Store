@@ -9,14 +9,17 @@
         <li><a href="/seller/menu">Seller</a></li>
         <%
             }
-            if (Objects.equals("ADMIN", role))
-            {
+            if (Objects.equals("ADMIN", role)) {
         %>
         <li><a href="/admin/home">Admin</a></li>
-        <%}%>
+        <%
+            }
+            String userID = (String) session.getAttribute("userID");
+            if (Objects.nonNull(userID)) {
+        %>
         <li><a href="/profile">Profile</a></li>
         <%
-            String userID = (String) session.getAttribute("userID");
+            }
             if (Objects.isNull(userID)) {
         %>
         <li><a href="/register" class="register"
