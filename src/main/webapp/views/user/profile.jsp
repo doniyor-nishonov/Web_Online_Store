@@ -29,7 +29,18 @@
         <input type="text" name="query" class="search-input" placeholder="Search...">
         <button type="submit" class="search-button">Search</button>
     </form>
-    <jsp:include page="../../fragments/navbar.jsp"/>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/logout"
+                   style="color: white; background-color: black; padding: 10px 20px; text-decoration: none;">Log out</a>
+            </li>
+
+        </ul>
+    </nav>
 </header>
 <main>
     <section class="profile">

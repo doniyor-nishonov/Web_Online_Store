@@ -28,7 +28,7 @@
                 <span>Password</span>
                 <input type="password" name="password">
             </label>
-            <button class="submit" type="submit">Sign In</button>
+            <button class="submit" type="submit">Log In</button>
         </form>
         <p class="forgot-pass">Forgot Password ?</p>
         <div class="social-media">
@@ -76,7 +76,7 @@
                     <span>Password</span>
                     <input type="password" name="password" required>
                 </label>
-                <button type="submit" class="submit">Sign Up Now</button>
+                <button type="submit" class="submit">Sign Up</button>
             </form>
         </div>
     </div>

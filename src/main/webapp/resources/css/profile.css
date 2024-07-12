@@ -189,6 +189,24 @@ header .search-form {
     color: #888;
 }
 
+.order-img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.purchase-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-button:hover {
+    background-color: #0056b3;
+}
+
 .view-order {
     background-color: #333;
     color: white;
@@ -211,3 +229,6 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+
+
