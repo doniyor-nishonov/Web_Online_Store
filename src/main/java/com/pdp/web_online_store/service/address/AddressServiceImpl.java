@@ -29,4 +29,9 @@ public class AddressServiceImpl implements AddressService {
     public List<Address> findAll() {
         return addressDAO.findAll();
     }
+
+    @Override
+    public List<Address> findAllActive() {
+        return addressDAO.findAllActive();
+    }
 }

@@ -40,7 +40,10 @@
             </p>
             <p>Price: $<%= product.getPrice() %>
             </p>
-            <button class="animate__animated animate__pulse">Delete</button>
+            <form action="${pageContext.request.contextPath}/product/delete" method="post">
+                <input type="hidden" name="productID" value="<%=product.getId()%>">
+                <button class="animate__animated animate__pulse" type="submit">Delete</button>
+            </form>
         </div>
         <%
             }

@@ -32,6 +32,11 @@ public class MagazineServiceImpl implements MagazineService {
     }
 
     @Override
+    public List<Magazine> findAllActive() {
+        return magazineDAO.findAllActive();
+    }
+
+    @Override
     public List<Magazine> getMagazinesBySellerId(String userID) {
         return findAll().stream()
                 .filter(magazine -> Objects.equals(magazine.getUsers().getId(), userID))

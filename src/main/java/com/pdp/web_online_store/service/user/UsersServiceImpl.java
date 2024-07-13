@@ -38,6 +38,11 @@ public class UsersServiceImpl implements UserService {
     }
 
     @Override
+    public List<Users> findAllActive() {
+        return usersDAO.findAllActive();
+    }
+
+    @Override
     public Optional<Users> login(String email, String password) {
         return findAll().stream()
                 .anyMatch(users -> Objects.equals(email, users.getEmail())

@@ -3,8 +3,8 @@ package com.pdp.web_online_store.servlets.product;
 import com.pdp.web_online_store.entity.customer.Cart;
 import com.pdp.web_online_store.entity.order.Orders;
 import com.pdp.web_online_store.entity.product.Product;
-import com.pdp.web_online_store.service.customer.CartService;
-import com.pdp.web_online_store.service.customer.CartServiceImpl;
+import com.pdp.web_online_store.service.cart.CartService;
+import com.pdp.web_online_store.service.cart.CartServiceImpl;
 import com.pdp.web_online_store.service.orders.OrderService;
 import com.pdp.web_online_store.service.orders.OrderServiceImpl;
 import com.pdp.web_online_store.service.product.ProductService;
@@ -19,7 +19,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "AddCartServlet", urlPatterns = "/addCart")
 public class AddCartServlet extends HttpServlet {

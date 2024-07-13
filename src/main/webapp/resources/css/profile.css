@@ -124,7 +124,7 @@ header .search-form {
 }
 
 .profile-img {
-    max-width: 150px;
+    max-width: 100px;
     border-radius: 50%;
     margin-right: 20px;
 }
@@ -190,7 +190,7 @@ header .search-form {
 }
 
 .order-img {
-    max-width: 100px;
+    max-width: 80px;
     margin-bottom: 10px;
 }
 
@@ -229,6 +229,3 @@ footer {
     width: 100%;
     bottom: 0;
 }
-
-
-

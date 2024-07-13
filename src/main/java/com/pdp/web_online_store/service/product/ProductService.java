@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface ProductService extends BaseService<Product, String> {
     ProductDAO productDAO = new ProductDAO();
+
     List<Product> getAllByCategory(String category);
+
+    void deActive(Product product);
 
     List<Product> getByRandom(int count);
 

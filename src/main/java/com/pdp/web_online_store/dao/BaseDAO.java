@@ -46,14 +46,21 @@ public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
 
     public List<T> findAll() {
         begin();
-        List<T> entities = em.createQuery("from "+persistenceClass.getSimpleName(), persistenceClass).getResultList();
+        List<T> entities = em.createQuery("from " + persistenceClass.getSimpleName(), persistenceClass).getResultList();
+        commit();
+        return entities;
+    }
+
+    public List<T> findAllActive() {
+        begin();
+        List<T> entities = em.createQuery("from " + persistenceClass.getSimpleName() + " where isactive not false", persistenceClass).getResultList();
         commit();
         return entities;
     }
 
     public boolean deleteById(@NonNull ID id) {
         begin();
-        em.createQuery("delete from " + persistenceClass.getSimpleName() + " t where t.id = :id")
+        em.createQuery(" from " + persistenceClass.getSimpleName() + " t where t.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
         commit();

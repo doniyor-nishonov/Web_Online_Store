@@ -34,6 +34,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findAllActive() {
+        return productDAO.findAllActive();
+    }
+
+    @Override
     public List<Product> getAllByCategory(String category) {
         return findAll().stream()
                 .filter(product -> Objects.equals(product.getCategory().toString(), category))
@@ -60,5 +65,11 @@ public class ProductServiceImpl implements ProductService {
         return products.stream()
                 .filter(product -> StringUtils.contains(product.getName(), query))
                 .toList();
+    }
+
+    @Override
+    public void deActive(Product product) {
+        product.setActive(false);
+        update(product);
     }
 }

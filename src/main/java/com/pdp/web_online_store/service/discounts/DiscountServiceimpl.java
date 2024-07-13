@@ -29,4 +29,9 @@ public class DiscountServiceimpl implements DiscountService{
     public List<Discount> findAll() {
         return discountDAO.findAll();
     }
+
+    @Override
+    public List<Discount> findAllActive() {
+        return discountDAO.findAllActive();
+    }
 }

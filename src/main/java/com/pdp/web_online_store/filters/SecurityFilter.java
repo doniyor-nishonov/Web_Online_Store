@@ -1,10 +1,7 @@
 package com.pdp.web_online_store.filters;
 
-import com.pdp.web_online_store.dao.user.UsersDAO;
-import com.pdp.web_online_store.entity.user.Users;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -17,7 +14,6 @@ import java.util.function.Predicate;
 @WebFilter(filterName = "SecurityFilter", value = "/*")
 public class SecurityFilter implements Filter {
 
-    private static final UsersDAO usersDAO = new UsersDAO();
 
     private static final List<String> WHITE_LIST = List.of(
             "/",
@@ -47,6 +43,10 @@ public class SecurityFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         String requestURI = request.getRequestURI();
         System.out.println("requestURI = " + requestURI);
+        if (requestURI.startsWith("/resources")) {
+            chain.doFilter(request, response); // continue request for static resources
+            return;
+        }
         if (!isOpen.test(requestURI)) {
             HttpSession session = request.getSession();
             Object id = session.getAttribute("userID");
@@ -54,9 +54,8 @@ public class SecurityFilter implements Filter {
             if (Objects.isNull(id)) {
                 response.sendRedirect("/register?next=" + requestURI);
             } else {
-                if (Objects.equals("USER", role) && isAdminPages.test(requestURI)) {
-                    response.sendError(403, "Permission denied");
-                } else if (Objects.equals("SELLER", role) && isSellerPager.test(requestURI)) {
+                if (Objects.equals("USER", role) && (isAdminPages.test(requestURI)
+                        || isSellerPager.test(requestURI))) {
                     response.sendError(403, "Permission denied");
                 } else {
                     chain.doFilter(request, response);

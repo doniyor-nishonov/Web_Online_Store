@@ -1,10 +1,8 @@
 package com.pdp.web_online_store.servlets.register;
 
 import com.pdp.web_online_store.entity.customer.Cart;
-import com.pdp.web_online_store.service.customer.CartService;
-import com.pdp.web_online_store.service.customer.CartServiceImpl;
-import com.pdp.web_online_store.service.orders.OrderService;
-import com.pdp.web_online_store.service.orders.OrderServiceImpl;
+import com.pdp.web_online_store.service.cart.CartService;
+import com.pdp.web_online_store.service.cart.CartServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,6 +35,7 @@ public class ProfileServlet extends HttpServlet {
         String cartID = req.getParameter("cartID");
         Cart cart = cartService.findById(cartID);
         cart.setPaid(true);
+        cart.setOrderStatus(Cart.OrderStatus.DELIVERED);
         cartService.update(cart);
         resp.sendRedirect("/");
     }

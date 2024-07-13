@@ -22,7 +22,8 @@ public abstract class Auditable {
     @Column(columnDefinition = "timestamp default now()", updatable = false)
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Builder.Default
     @Column(columnDefinition = "boolean default true")
-    private boolean isActive;
+    private boolean isActive = true;
 }
 

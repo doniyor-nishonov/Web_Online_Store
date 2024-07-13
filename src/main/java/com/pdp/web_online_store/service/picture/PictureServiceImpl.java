@@ -29,4 +29,9 @@ public class PictureServiceImpl implements PictureService {
     public List<Picture> findAll() {
         return pictureDAO.findAll();
     }
+
+    @Override
+    public List<Picture> findAllActive() {
+        return pictureDAO.findAllActive();
+    }
 }

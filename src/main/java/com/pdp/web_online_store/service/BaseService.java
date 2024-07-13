@@ -15,4 +15,6 @@ public interface BaseService<T extends Auditable, ID extends Serializable> {
     T findById(ID id);
 
     List<T> findAll();
+
+    List<T> findAllActive();
 }

@@ -1,4 +1,4 @@
-package com.pdp.web_online_store.service.customer;
+package com.pdp.web_online_store.service.cart;
 
 import com.pdp.web_online_store.entity.customer.Cart;
 import com.pdp.web_online_store.service.user.UserService;
@@ -12,27 +12,32 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Cart save(Cart cart) {
-        return CART_DAO.save(cart);
+        return cartDao.save(cart);
     }
 
     @Override
     public boolean update(Cart cart) {
-        return CART_DAO.update(cart);
+        return cartDao.update(cart);
     }
 
     @Override
     public boolean delete(String s) {
-        return CART_DAO.deleteById(s);
+        return cartDao.deleteById(s);
     }
 
     @Override
     public Cart findById(String s) {
-        return CART_DAO.findById(s);
+        return cartDao.findById(s);
     }
 
     @Override
     public List<Cart> findAll() {
-        return CART_DAO.findAll();
+        return cartDao.findAll();
+    }
+
+    @Override
+    public List<Cart> findAllActive() {
+        return cartDao.findAllActive();
     }
 
     @Override

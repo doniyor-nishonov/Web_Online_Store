@@ -2,9 +2,8 @@ package com.pdp.web_online_store.service.orders;
 
 import com.pdp.web_online_store.entity.customer.Cart;
 import com.pdp.web_online_store.entity.order.Orders;
-import com.pdp.web_online_store.entity.user.Users;
-import com.pdp.web_online_store.service.customer.CartService;
-import com.pdp.web_online_store.service.customer.CartServiceImpl;
+import com.pdp.web_online_store.service.cart.CartService;
+import com.pdp.web_online_store.service.cart.CartServiceImpl;
 import com.pdp.web_online_store.service.user.UserService;
 import com.pdp.web_online_store.service.user.UsersServiceImpl;
 
@@ -42,6 +41,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Orders> findAllActive() {
+        return orderDAO.findAllActive();
+    }
+
+    @Override
     public Orders getOrCreate(Orders order, Cart cart) {
         List<Orders> ordersList = findAll();
         Optional<Orders> existingOrder = ordersList.stream().filter(o -> o.getProduct().getId().equals(order.getProduct().getId()) &&
@@ -51,6 +55,7 @@ public class OrderServiceImpl implements OrderService {
         if (existingOrder.isPresent()) {
             Orders foundOrder = existingOrder.get();
             foundOrder.setQuantity(foundOrder.getQuantity() + order.getQuantity());
+            update(foundOrder);
             return foundOrder;
         } else {
             save(order);
