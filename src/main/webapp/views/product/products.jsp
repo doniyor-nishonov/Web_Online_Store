@@ -16,7 +16,7 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/products">Products</a></li>
-            <li><a href="${pageContext.request.contextPath}/">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
             <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
         </ul>
     </nav>

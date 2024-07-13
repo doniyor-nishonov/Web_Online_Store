@@ -17,7 +17,6 @@
 <body>
 <header>
     <div class="logo">Online Shop</div>
-    <jsp:include page="../../fragments/navbar.jsp"/>
     <form class="search-form" action="/search" method="GET">
         <input type="text" name="query" placeholder="Search products...">
         <button type="submit">Search</button>

@@ -57,6 +57,8 @@ public class SecurityFilter implements Filter {
                 if (Objects.equals("USER", role) && (isAdminPages.test(requestURI)
                         || isSellerPager.test(requestURI))) {
                     response.sendError(403, "Permission denied");
+                } else if (!Objects.equals("USER", role) && requestURI.equals("/addCart")) {
+                    response.sendError(403, "Permission denied");
                 } else {
                     chain.doFilter(request, response);
                 }

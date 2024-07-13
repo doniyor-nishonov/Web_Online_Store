@@ -39,6 +39,7 @@ public class AddCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String productId = req.getParameter("productID");
         String quantity = req.getParameter("quantity");
+        double price = Double.parseDouble(req.getParameter("price"));
         HttpSession session = req.getSession();
         String userId = (String) session.getAttribute("userID");
         Product product = productService.findById(productId);
@@ -47,6 +48,7 @@ public class AddCartServlet extends HttpServlet {
                 .product(product)
                 .quantity(Integer.parseInt(quantity))
                 .cart(cart)
+                .totalPrice(price * Integer.parseInt(quantity))
                 .build();
         cartService.save(cart);
         orderService.getOrCreate(orders, cart);

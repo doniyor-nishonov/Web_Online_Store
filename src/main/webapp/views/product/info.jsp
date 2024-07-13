@@ -15,7 +15,7 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/products">Products</a></li>
-            <li><a href="${pageContext.request.contextPath}/about">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
             <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
         </ul>
     </nav>
@@ -43,6 +43,7 @@
                         <input type="number" id="quantity" name="quantity" value="1" min="1">
                     </div>
                     <input type="hidden" name="productID" value="<%=product.getId()%>">
+                    <input type="hidden" name="price" value="<%=product.getPrice()%>">
                     <button type="submit" class="add-to-cart">Add to Cart</button>
                 </form>
             </div>

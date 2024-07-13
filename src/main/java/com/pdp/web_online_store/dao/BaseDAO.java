@@ -60,7 +60,7 @@ public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
 
     public boolean deleteById(@NonNull ID id) {
         begin();
-        em.createQuery(" from " + persistenceClass.getSimpleName() + " t where t.id = :id")
+        em.createQuery("delete from " + persistenceClass.getSimpleName() + " t where t.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
         commit();
