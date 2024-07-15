@@ -1,4 +1,4 @@
-package com.pdp.web_online_store.entity.magazine;
+package com.pdp.web_online_store.entity.store;
 
 import com.pdp.web_online_store.entity.Auditable;
 import com.pdp.web_online_store.entity.address.Address;
@@ -16,18 +16,26 @@ import java.util.List;
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
-public class Magazine extends Auditable {
+public class Store extends Auditable {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private Users users;
 
     private String name;
     private String description;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne
     private Address address;
 
-    @OneToMany(mappedBy = "magazine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
+
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+
+    public enum Status {
+        ACTIVE, INACTIVE
+    }
 }

@@ -1,5 +1,7 @@
 <%@ page import="com.pdp.web_online_store.entity.product.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.pdp.web_online_store.entity.store.Store" %>
+<%@ page import="com.pdp.web_online_store.entity.store.Store" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,6 @@
     <nav>
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Main menu</a></li>
-            <li><a href="${pageContext.request.contextPath}/seller/menu">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createMagazine">Create Magazine</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createProduct">Create Product</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/showProduct">Show Products</a></li>
@@ -24,6 +25,17 @@
     </nav>
 </header>
 <main>
+    <aside class="filter animate__animated animate__fadeInLeft">
+        <h2>Filter Products</h2>
+        <%
+            @SuppressWarnings("unchecked")
+            List<Store> stores = (List<Store>) request.getAttribute("stores");
+            for (Store store : stores) {
+        %>
+        <div><a href="/seller/showProduct?magazineID=<%=store.getId()%>"><%=store.getName()%>
+        </a></div>
+        <%}%>
+    </aside>
     <section class="products-list animate__animated animate__fadeInUp">
         <h1>All Products</h1>
         <%

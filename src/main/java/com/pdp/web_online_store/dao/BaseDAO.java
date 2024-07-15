@@ -38,23 +38,17 @@ public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
     }
 
     public T findById(@NonNull ID id) {
-        begin();
         T entity = em.find(persistenceClass, id);
-        commit();
         return entity;
     }
 
     public List<T> findAll() {
-        begin();
         List<T> entities = em.createQuery("from " + persistenceClass.getSimpleName(), persistenceClass).getResultList();
-        commit();
         return entities;
     }
 
     public List<T> findAllActive() {
-        begin();
         List<T> entities = em.createQuery("from " + persistenceClass.getSimpleName() + " where isactive not false", persistenceClass).getResultList();
-        commit();
         return entities;
     }
 

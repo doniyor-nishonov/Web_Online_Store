@@ -14,7 +14,6 @@
     <nav>
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Main menu</a></li>
-            <li><a href="${pageContext.request.contextPath}/seller/menu">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createMagazine">Create Magazine</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createProduct">Create Product</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/showProduct">Show Products</a></li>
@@ -30,6 +29,9 @@
 
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
 
             <button type="submit" class="animate__animated animate__pulse animate__infinite">Create Magazine</button>
         </form>

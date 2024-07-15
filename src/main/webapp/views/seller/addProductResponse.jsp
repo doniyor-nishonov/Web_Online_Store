@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="3;url=/seller/menu">
+    <meta http-equiv="refresh" content="3;url=/seller/showProduct">
     <title>Add Product Response</title>
     <link rel="stylesheet" href="../../resources/css/addProductResponse.css">
     <script src="../../resources/js/addProductResponse.js"></script>
@@ -20,7 +20,6 @@
     <nav>
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Main menu</a></li>
-            <li><a href="${pageContext.request.contextPath}/seller/menu">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createMagazine">Create Magazine</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createProduct">Create Product</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/showProduct">Show Products</a></li>

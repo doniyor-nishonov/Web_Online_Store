@@ -1,7 +1,7 @@
 package com.pdp.web_online_store.entity.product;
 
 import com.pdp.web_online_store.entity.Auditable;
-import com.pdp.web_online_store.entity.magazine.Magazine;
+import com.pdp.web_online_store.entity.store.Store;
 import com.pdp.web_online_store.entity.picture.Picture;
 import com.pdp.web_online_store.enums.Category;
 import jakarta.persistence.*;
@@ -23,7 +23,7 @@ public class Product extends Auditable {
     private double price;
 
     @ManyToOne
-    private Magazine magazine;
+    private Store store;
 
     @Enumerated(EnumType.STRING)
     private Category category;

@@ -27,12 +27,12 @@
                     String role = (String) session.getAttribute("role");
                     if (Objects.equals("SELLER", role)) {
                 %>
-                <li><a href="${pageContext.request.contextPath}/seller/menu">Seller</a></li>
+                <li><a href="${pageContext.request.contextPath}/seller/createMagazine">Seller</a></li>
                 <%
                     }
                     if (Objects.equals("ADMIN", role)) {
                 %>
-                <li><a href="${pageContext.request.contextPath}/admin/home">Admin</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/manage">Admin</a></li>
                 <%
                     }
                     String userID = (String) session.getAttribute("userID");
@@ -66,7 +66,7 @@
         <div class="product-list">
             <%
                 ProductService productService = new ProductServiceImpl();
-                List<Product> products = productService.findAll();
+                List<Product> products = productService.getByRandom(12);
                 for (Product product : products) {
             %>
             <div class="product">
@@ -76,7 +76,8 @@
                         <img src="<%= product.getPicture().getImageUrl() %>" alt="Sneaker Image">
                     </button>
                 </form>
-                <h3><%= product.getName() %></h3>
+                <h3><%= product.getName() %>
+                </h3>
                 <p><%= product.getPrice() %> $</p>
             </div>
             <% } %>

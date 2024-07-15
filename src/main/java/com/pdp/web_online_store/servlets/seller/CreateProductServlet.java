@@ -1,11 +1,11 @@
 package com.pdp.web_online_store.servlets.seller;
 
-import com.pdp.web_online_store.entity.magazine.Magazine;
+import com.pdp.web_online_store.entity.store.Store;
 import com.pdp.web_online_store.entity.picture.Picture;
 import com.pdp.web_online_store.entity.product.Product;
 import com.pdp.web_online_store.enums.Category;
-import com.pdp.web_online_store.service.magazine.MagazineService;
-import com.pdp.web_online_store.service.magazine.MagazineServiceImpl;
+import com.pdp.web_online_store.service.store.StoreService;
+import com.pdp.web_online_store.service.store.StoreServiceImpl;
 import com.pdp.web_online_store.service.product.ProductService;
 import com.pdp.web_online_store.service.product.ProductServiceImpl;
 import jakarta.servlet.ServletException;
@@ -27,21 +27,21 @@ import java.util.UUID;
 @WebServlet(name = "CreateProductServlet", value = "/seller/createProduct")
 public class CreateProductServlet extends HttpServlet {
     private ProductService productService;
-    private MagazineService magazineService;
+    private StoreService storeService;
     private final Path rootPath = Path.of("/Users/user/Desktop/PDP_ACADEMY/pdp/ultimate/g40/projects/Web_Online_Store/src/main/webapp/resources/img");
 
     @Override
     public void init() throws ServletException {
         productService = new ProductServiceImpl();
-        magazineService = new MagazineServiceImpl();
+        storeService = new StoreServiceImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userID = (String) req.getSession().getAttribute("userID");
-        List<Magazine> magazines = magazineService.getMagazinesBySellerId(userID);
+        List<Store> stores = storeService.getMagazinesBySellerId(userID);
         req.setAttribute("Category", Category.values());
-        req.setAttribute("magazines", magazines);
+        req.setAttribute("stores", stores);
         req.getRequestDispatcher("/views/seller/createProduct.jsp").forward(req, resp);
     }
 
@@ -50,10 +50,10 @@ public class CreateProductServlet extends HttpServlet {
         String name = req.getParameter("name");
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
-        int quantity = Integer.parseInt(req.getParameter("quantity"));
         Category category = Category.valueOf(req.getParameter("category"));
-        String magazineID = req.getParameter("magazineID");
-        Magazine magazine = magazineService.findById(magazineID);
+        String magazineID = req.getParameter("store");
+//        String magazineID = req.getParameter("magazineID");
+        Store store = storeService.findById(magazineID);
         Part part = req.getPart("image");
         Picture picture = getPicture(part);
         Product product = Product.builder()
@@ -62,11 +62,16 @@ public class CreateProductServlet extends HttpServlet {
                 .price(price)
                 .category(category)
                 .picture(picture)
-                .stockQuantity(quantity)
-                .magazine(magazine)
+                .store(store)
                 .build();
-        productService.save(product);
-        req.getRequestDispatcher("/views/seller/addProductResponse.jsp").forward(req, resp);
+        String userID = (String) req.getSession().getAttribute("userID");
+        boolean check = storeService.isActiveStore(userID, magazineID);
+        if (check) {
+            productService.save(product);
+            req.getRequestDispatcher("/views/seller/addProductResponse.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/views/seller/failedResponse.jsp").forward(req, resp);
+        }
     }
 
     private Picture getPicture(Part part) throws IOException {

@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getByOwnerId(String userID) {
         return findAll().stream()
-                .filter(product -> Objects.equals(product.getMagazine().getUsers().getId(), userID))
+                .filter(product -> Objects.equals(product.getStore().getUsers().getId(), userID))
                 .toList();
     }
 
@@ -71,5 +71,25 @@ public class ProductServiceImpl implements ProductService {
     public void deActive(Product product) {
         product.setActive(false);
         update(product);
+    }
+
+    @Override
+    public List<Product> findProductByRange(int minPrice, int maxPrice) {
+        return productDAO.findProductByRange(minPrice, maxPrice);
+    }
+
+    @Override
+    public List<Product> findProductByRangeAndCategory(String category, int minPrice, int maxPrice) {
+//        List<Product> productByRangeAndCategory = productDAO.findProductByRangeAndCategory(category, minPrice, maxPrice);
+        return findAll().stream()
+                .filter(p -> Objects.equals(category, p.getCategory().toString()) && (p.getPrice() >= minPrice && p.getPrice() <= maxPrice))
+                .toList();
+    }
+
+    @Override
+    public List<Product> getByMagazineId(String magazineID) {
+        return findAll().stream()
+                .filter(product -> Objects.equals(product.getStore().getId(), magazineID))
+                .toList();
     }
 }

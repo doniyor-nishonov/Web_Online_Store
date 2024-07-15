@@ -1,9 +1,10 @@
 package com.pdp.web_online_store.servlets.seller;
 
-import com.pdp.web_online_store.entity.magazine.Magazine;
+import com.pdp.web_online_store.entity.address.Address;
+import com.pdp.web_online_store.entity.store.Store;
 import com.pdp.web_online_store.entity.user.Users;
-import com.pdp.web_online_store.service.magazine.MagazineService;
-import com.pdp.web_online_store.service.magazine.MagazineServiceImpl;
+import com.pdp.web_online_store.service.store.StoreService;
+import com.pdp.web_online_store.service.store.StoreServiceImpl;
 import com.pdp.web_online_store.service.user.UserService;
 import com.pdp.web_online_store.service.user.UsersServiceImpl;
 import jakarta.servlet.ServletException;
@@ -16,12 +17,12 @@ import java.io.IOException;
 
 @WebServlet(name = "CreateMagazineServlet", value = "/seller/createMagazine")
 public class CreateMagazineServlet extends HttpServlet {
-    private MagazineService magazineService;
+    private StoreService storeService;
     private UserService userService;
 
     @Override
     public void init() throws ServletException {
-        magazineService = new MagazineServiceImpl();
+        storeService = new StoreServiceImpl();
         userService = new UsersServiceImpl();
     }
 
@@ -35,16 +36,20 @@ public class CreateMagazineServlet extends HttpServlet {
         String userID = (String) req.getSession().getAttribute("userID");
         String name = req.getParameter("name");
         String description = req.getParameter("description");
+        String address = req.getParameter("address");
+
         Users users = userService.findById(userID);
-        Magazine magazine = magazineMapping(name, description, users);
-        magazineService.save(magazine);
+        Store store = magazineMapping(name, description, address, users);
+        storeService.save(store);
         resp.sendRedirect("/seller/showProduct");
     }
 
-    private static Magazine magazineMapping(String name, String description, Users users) {
-        return Magazine.builder()
+    private static Store magazineMapping(String name, String description, String city, Users users) {
+        Address address = Address.builder().city(city).build();
+        return Store.builder()
                 .name(name)
                 .description(description)
+                .address(address)
                 .users(users)
                 .build();
     }

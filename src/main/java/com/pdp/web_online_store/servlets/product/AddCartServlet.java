@@ -24,14 +24,12 @@ import java.io.IOException;
 public class AddCartServlet extends HttpServlet {
     private ProductService productService;
     private OrderService orderService;
-    private UserService userService;
     private CartService cartService;
 
     @Override
     public void init() throws ServletException {
         this.productService = new ProductServiceImpl();
         this.orderService = new OrderServiceImpl();
-        this.userService = new UsersServiceImpl();
         this.cartService = new CartServiceImpl();
     }
 

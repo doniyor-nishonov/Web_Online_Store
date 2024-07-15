@@ -18,4 +18,10 @@ public interface ProductService extends BaseService<Product, String> {
     List<Product> getByOwnerId(String userID);
 
     List<Product> findByName(String query);
+
+    List<Product> findProductByRange(int minPrice, int maxPrice);
+
+    List<Product> findProductByRangeAndCategory(String category, int minPrice, int maxPrice);
+
+    List<Product> getByMagazineId(String magazineID);
 }

@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.pdp.web_online_store.entity.magazine.Magazine" %><%--
+<%@ page import="com.pdp.web_online_store.entity.store.Store" %>
+<%@ page import="com.pdp.web_online_store.entity.store.Store" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 08/07/24
@@ -22,7 +23,6 @@
     <nav>
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Main menu</a></li>
-            <li><a href="${pageContext.request.contextPath}/seller/menu">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createMagazine">Create Magazine</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/createProduct">Create Product</a></li>
             <li><a href="${pageContext.request.contextPath}/seller/showProduct">Show Products</a></li>
@@ -32,7 +32,8 @@
 <main>
     <section class="create-form">
         <h1>Create Product</h1>
-        <form action="${pageContext.request.contextPath}/seller/createProduct" method="POST" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/seller/createProduct" method="POST"
+              enctype="multipart/form-data">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -42,8 +43,18 @@
             <label for="price">Price:</label>
             <input type="number" id="price" name="price" required>
 
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" required>
+            <label for="store">Magazine:</label>
+            <select id="store" name="store" required>
+                <%
+                    @SuppressWarnings("unchecked")
+                    List<Store> stores = (List<Store>) request.getAttribute("stores");
+                    for (Store store : stores) {
+                %>
+                <option value="<%= store.getId() %>"><%= store.getName() %>
+                </option>
+                <%--                <input type="hidden" name="magazineID" value="<%=store.getId()%>">--%>
+                <% } %>
+            </select>
 
             <label for="category">Category:</label>
             <select id="category" name="category" required>
@@ -53,18 +64,6 @@
                 <% } %>
             </select>
 
-            <label for="magazine">Magazine:</label>
-            <select id="magazine" name="magazine" required>
-                <%
-                    @SuppressWarnings("unchecked")
-                    List<Magazine> magazines = (List<Magazine>) request.getAttribute("magazines");
-                    for (Magazine magazine : magazines) {
-                %>
-                <option value="<%= magazine.getName() %>"><%= magazine.getName() %>
-                </option>
-                <input type="hidden" name="magazineID" value="<%=magazine.getId()%>">
-                <% } %>
-            </select>
 
             <label for="image">Image:</label>
             <input type="file" id="image" name="image" required>
